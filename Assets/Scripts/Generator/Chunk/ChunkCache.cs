@@ -67,7 +67,6 @@ namespace Pamux.Lib.LevelData.Generator
 
         internal static IList<string> GetChunkKeysInRadius(Vector3 worldPosition, int radius)
         {
-            Debug.Log("GetChunkKeysInRadius");
             return GetChunkKeysInRadius(LevelDataChunk.GetKey(worldPosition), radius);
         }
 

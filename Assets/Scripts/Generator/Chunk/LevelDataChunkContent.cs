@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.GameObjects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,44 +9,86 @@ namespace Pamux.Lib.LevelData.Generator
 {
     public class LevelDataChunkContent
     {
+        public static LevelDataGeneratorSettings S { get { return LevelDataGeneratorSettings.Instance; } }
+        public static LevelDataGenerator G { get { return LevelDataGenerator.Instance; } }
+
         public readonly IList<GameObject> GameObjects = new List<GameObject>();
         public Terrain Terrain;
         public TerrainData TerrainData;
 
         private LevelDataChunk levelDataChunk;
+        private GameObjectFactory gameObjectFactory;
 
-        private static LevelDataGeneratorSettings Settings { get { return LevelDataChunk.Settings; } }
         public LevelDataMaps LevelDataMaps { get { return levelDataChunk.LevelDataMaps; } }
 
 
         public LevelDataChunkContent(LevelDataChunk levelDataChunk)
         {
             this.levelDataChunk = levelDataChunk;
+            gameObjectFactory = new GameObjectFactory(this);
+        }
+
+        internal void CreateTestObjects()
+        {
+            var chunkOrigin = levelDataChunk.OriginAtDefaultElevation;
+            var o = gameObjectFactory.Create(GameObjectTypes.PrimitiveSphere, chunkOrigin);
+
+            o.transform.localScale *= 2f;
+
+            foreach (var chunkCorner in levelDataChunk.CornersAtDefaultElevation)
+            {
+                o = gameObjectFactory.Create(GameObjectTypes.PrimitiveCylinder, chunkCorner);
+
+                o.transform.localScale *= 2f;
+            }
+        }
+
+        internal void CreateTestTrees()
+        {
+            var chunkOrigin = levelDataChunk.OriginAtDefaultElevation;
+
+            for(int i = 0; i  < 10; ++i)
+            {
+                gameObjectFactory.CreateRandom(S.trees, levelDataChunk.NextRandomVector3OnSurface);
+            }
+        }
+
+        internal void CreateTestHouses()
+        {
+            var chunkOrigin = levelDataChunk.OriginAtDefaultElevation;
+
+            for (int i = 0; i < 5; ++i)
+            {
+                gameObjectFactory.CreateRandom(S.houses, levelDataChunk.NextRandomVector3OnSurface);
+            }
         }
 
 
         internal void CreateGameObjects()
         {
+            //CreateTestObjects();
+            CreateTestTrees();
+            CreateTestHouses();
         }
 
         public void CreateTerrain()
         {
             TerrainData = new TerrainData
             {
-                heightmapResolution = Settings.HeightMapResolution,
-                alphamapResolution = Settings.AlphaMapResolution
+                heightmapResolution = S.HeightMapResolution,
+                alphamapResolution = S.AlphaMapResolution
             };
             TerrainData.SetHeights(0, 0, LevelDataMaps.HeightMap);
             ApplyTextures();
 
-            TerrainData.size = new Vector3(Settings.Length, Settings.Height, Settings.Length);
+            TerrainData.size = new Vector3(S.Length, S.Height, S.Length);
             var newTerrainGameObject = Terrain.CreateTerrainGameObject(TerrainData);
-            newTerrainGameObject.transform.position = new Vector3(levelDataChunk.X * Settings.Length, 0, levelDataChunk.Z * Settings.Length);
+            newTerrainGameObject.transform.position = new Vector3(levelDataChunk.X * S.Length, 0, levelDataChunk.Z * S.Length);
 
             Terrain = newTerrainGameObject.GetComponent<Terrain>();
             Terrain.heightmapPixelError = 8;
             Terrain.materialType = UnityEngine.Terrain.MaterialType.Custom;
-            Terrain.materialTemplate = Settings.TerrainMaterial;
+            Terrain.materialTemplate = S.TerrainMaterial;
             Terrain.reflectionProbeUsage = UnityEngine.Rendering.ReflectionProbeUsage.Off;
             Terrain.Flush();
         }

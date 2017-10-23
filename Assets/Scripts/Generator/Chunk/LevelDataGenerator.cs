@@ -6,6 +6,9 @@ using System;
 
 public class LevelDataGenerator : MonoBehaviour
 {
+    public static LevelDataGenerator Instance { get; private set; }
+    public System.Random Random { get; private set; }
+
     private const int Radius = 4;
 
     private string previousPlayerPositionChunkKey;
@@ -14,26 +17,25 @@ public class LevelDataGenerator : MonoBehaviour
 
     public LevelDataGeneratorSettings Settings;
 
-    public int seed = 1;
-
     public INoiseMaker NoiseMaker;
 
     void Awake()
     {
-        if (LevelDataChunk.LevelDataGenerator != null)
+        if (Instance != null)
         {
             throw new Exception("LevelDataGenerator must be singleton");
         }
 
-        LevelDataChunk.LevelDataGenerator = this;
-        LevelDataMaps.LevelDataGenerator = this;
+        Instance = this;
 
         if (Settings == null)
         {
             throw new Exception("Settings can't be null");
         }
         
-        NoiseMaker = new NoiseMaker(seed);
+        NoiseMaker = new NoiseMaker(Settings.Seed);
+
+        Random = new System.Random(Settings.Seed);
     }
 
     void Start()

@@ -7,6 +7,10 @@ namespace Pamux.Lib.LevelData.Generator
 {
     public class LevelDataChunk
     {
+        public static LevelDataGeneratorSettings S { get { return LevelDataGeneratorSettings.Instance; } }
+        public static LevelDataGenerator G { get { return LevelDataGenerator.Instance; } }
+
+
         public int X { get; private set; }
         public int Z { get; private set; }
 
@@ -26,19 +30,10 @@ namespace Pamux.Lib.LevelData.Generator
 
         public LevelDataMaps LevelDataMaps { get; private set; }
 
-        public static LevelDataGenerator LevelDataGenerator;
-        public static LevelDataGeneratorSettings Settings { get { return LevelDataGenerator == null ? null :  LevelDataGenerator.Settings; } }
-        
-
         internal static void WorldToChunkPosition(Vector3 worldPosition, ref int x, ref int z)
         {
-            if (Settings == null)
-            {
-                throw new Exception("Settings is null");
-            }
-
-            x = (int)Mathf.Floor(worldPosition.x / Settings.Length);
-            z = (int)Mathf.Floor(worldPosition.z / Settings.Length);
+            x = (int)Mathf.Floor(worldPosition.x / S.Length);
+            z = (int)Mathf.Floor(worldPosition.z / S.Length);
         }
 
         internal static string GetKey(int x, int z)
@@ -279,6 +274,49 @@ namespace Pamux.Lib.LevelData.Generator
                     return null;
                 }
                 return dataChunk.content.Terrain;
+            }
+        }
+
+        public Vector3 OriginAtDefaultElevation { get { return S.GetVector3AtDefaultElevation(X, Z); } }
+
+        public Vector3 NorthWestUnit{ get { return new Vector3(-1.0f, 0, +1.0f); } }
+        public Vector3 NorthEastUnit { get { return new Vector3(-1.0f, 0, +1.0f); } }
+        public Vector3 SouthEastUnit { get { return new Vector3(-1.0f, 0, +1.0f); } }
+        public Vector3 SouthWestUnit { get { return new Vector3(-1.0f, 0, +1.0f); } }
+
+
+        public IEnumerable<Vector3> CornersAtDefaultElevation
+        {
+            get
+            {
+                var origin = OriginAtDefaultElevation;
+                var halfHypotenuse = (float) Math.Sqrt(S.Length * S.Length) / 2;
+
+                return new List<Vector3>
+                {
+                    origin + NorthWestUnit * halfHypotenuse,
+                    origin + NorthEastUnit * halfHypotenuse,
+                    origin + SouthEastUnit * halfHypotenuse,
+                    origin + SouthWestUnit * halfHypotenuse,
+                };
+            }
+        }
+
+        static int xx = 0;
+        public Vector3 NextRandomVector3OnSurface
+        {
+            get
+            {
+                var origin = OriginAtDefaultElevation;
+                var halfHypotenuse = (float)Math.Sqrt(S.Length * S.Length) / 2;
+                var randomDistanceX = (float)G.Random.NextDouble() * halfHypotenuse;
+                var randomDistanceZ = (float)G.Random.NextDouble() * halfHypotenuse;
+
+                var randomPoint = origin + new Vector3(randomDistanceX, 0f, randomDistanceZ);
+
+                var elevation = ChunkCache.GetElevation(randomPoint);
+
+                return new Vector3(randomPoint.x, elevation, randomPoint.z); 
             }
         }
 

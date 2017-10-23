@@ -147,7 +147,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 200298248}
   Settings: {fileID: 242395940}
-  seed: 1
 --- !u!4 &242395938
 Transform:
   m_ObjectHideFlags: 0
@@ -170,7 +169,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 242395936}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13fd5f1d8078ff9419329c7273d0ee8f, type: 3}
+  m_Script: {fileID: 11500000, guid: a1dfbbf8556688a48aad152065832104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 200298248}
@@ -196,7 +195,21 @@ MonoBehaviour:
   Height: 40
   FlatTexture: {fileID: 2800000, guid: abc486c4404abec45bf6bbc84f5e6724, type: 3}
   SteepTexture: {fileID: 2800000, guid: b0473df2c9578da47bd8219760f3a64e, type: 3}
-  TerrainMaterial: {fileID: 2100000, guid: 94fbe753cb405074dab0f9c7ed68248d, type: 2}
+  TerrainMaterial: {fileID: 2100000, guid: 7af2fbad13b21e3449f291c5ab3e3adc, type: 2}
+  DefaultGameObjectElevation: 1
+  trees:
+  - {fileID: 100000, guid: f4026fb3031d2064290e279bc3422b8c, type: 2}
+  - {fileID: 100000, guid: 547ffa9a2bef32548affd2a22dabf4f8, type: 2}
+  - {fileID: 100000, guid: 3eb56f7c68c009744b96bf225a9c3ed2, type: 2}
+  - {fileID: 100000, guid: e4a2f67b2b12e1849a3d9b6cb1a53067, type: 2}
+  - {fileID: 100000, guid: 67ba25b426a528e4a9330833f89e2f89, type: 2}
+  - {fileID: 100000, guid: 08ea90fd04f996f43872143406b73b1b, type: 2}
+  houses:
+  - {fileID: 100000, guid: 3040f6c2413d7ff45a180f0472345ef3, type: 2}
+  - {fileID: 100000, guid: ccef86b782ac28c489f4e9b4a5e994d2, type: 2}
+  - {fileID: 100000, guid: fae10b1ea13908f4f8a1939fda58c7c7, type: 2}
+  - {fileID: 100000, guid: f25532409e9641b4a94befe1bb3a468d, type: 2}
+  - {fileID: 100000, guid: 8e75bee04f0210545a80d53c3e52710f, type: 2}
 --- !u!1 &723715179
 GameObject:
   m_ObjectHideFlags: 0
@@ -715,7 +728,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1226894201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -780,7 +793,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1226894200}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 654, y: 349, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 922950207}
@@ -891,7 +904,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 1
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -1123,6 +1136,10 @@ Prefab:
     - target: {fileID: 496262, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 2}
       propertyPath: m_LocalRotation.w
       value: -0.11041513
+      objectReference: {fileID: 0}
+    - target: {fileID: 11469404, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 2}
+      propertyPath: m_MoveSpeedMultiplier
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 2}
