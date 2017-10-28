@@ -54,6 +54,10 @@ namespace Assets.Scripts.GameObjects
 
         public GameObject CreatePrefab(GameObject prefab, Vector3 position)
         {
+            if (prefab == null)
+            {
+                throw new ArgumentNullException(nameof(prefab));
+            }
             // Editor only
             //var prefab = AssetDatabase.LoadAssetAtPath("Assets/something.prefab", typeof(GameObject));
             //var o = Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;

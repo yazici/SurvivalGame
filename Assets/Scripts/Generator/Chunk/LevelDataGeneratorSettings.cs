@@ -1,13 +1,13 @@
-﻿using Assets.Scripts.GameObjects;
+﻿using Pamux.GameModel;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
+using Pamux.Utilities;
 
 namespace Pamux.Lib.LevelData.Generator
 {
-    public class LevelDataGeneratorSettings : MonoBehaviour
+    public class LevelDataGeneratorSettings : Singleton<LevelDataGeneratorSettings>
     {
-        public static LevelDataGeneratorSettings Instance { get; private set; }
-
         public int HeightMapResolution = 129;
 
         public int TemperatureMapResolution = 129;
@@ -31,25 +31,17 @@ namespace Pamux.Lib.LevelData.Generator
         public Material TerrainMaterial;
 
         public float DefaultGameObjectElevation = 1.0f;
-
-        public GameObject[] trees;
-
-        public GameObject[] houses;
-
-
-        void Awake()
-        {
-            if (Instance != null)
-            {
-                throw new Exception("LevelDataGeneratorSettings must be singleton");
-            }
-
-            Instance = this;
-        }
+		public float DefaultCloudElevation = 100.0f;
 
         public Vector3 GetVector3AtDefaultElevation(int x, int z)
         {
             return new Vector3(x * Length, DefaultGameObjectElevation, z * Length);
+        }
+		
+		
+		public Vector3 GetVector3AtCloudElevation(int x, int z)
+        {
+            return new Vector3(x * Length, DefaultCloudElevation, z * Length);
         }
     }
 }

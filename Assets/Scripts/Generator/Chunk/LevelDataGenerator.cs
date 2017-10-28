@@ -52,17 +52,20 @@ public class LevelDataGenerator : MonoBehaviour
             if (ChunkCache.IsChunkGenerated(chunkKey))
             {
                 previousPlayerPositionChunkKey = chunkKey;
-                ActivatePlayer();
+				ActivatePlayer();
                 break;
             }
             yield return null;
         } while (true);        
+		
     }
 
     private void ActivatePlayer()
     {
+		
         Player.position = new Vector3(Player.position.x, ChunkCache.GetElevation(Player.position) + 0.5f, Player.position.z);
         Player.gameObject.SetActive(true);
+		Player.GetComponent<Rigidbody>().useGravity = true;
     }
 
     private void Update()

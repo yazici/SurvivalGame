@@ -9,6 +9,7 @@ namespace Pamux.Lib.LevelData.Generator
 {
     public class LevelDataChunkContent
     {
+        public static AssetLibrary A { get { return AssetLibrary.Instance; } }
         public static LevelDataGeneratorSettings S { get { return LevelDataGeneratorSettings.Instance; } }
         public static LevelDataGenerator G { get { return LevelDataGenerator.Instance; } }
 
@@ -42,33 +43,35 @@ namespace Pamux.Lib.LevelData.Generator
                 o.transform.localScale *= 2f;
             }
         }
-
-        internal void CreateTestTrees()
+        
+        internal void CreateRandomObjects(int count, GameObject[] gameObjectTemplates, Func<Vector3> randomVector3Provider = null)
         {
+			if (gameObjectTemplates == null)
+			{
+					throw new ArgumentNullException(nameof(gameObjectTemplates));
+			}
             var chunkOrigin = levelDataChunk.OriginAtDefaultElevation;
+			
+			if (randomVector3Provider == null)
+			{
+				randomVector3Provider = () => levelDataChunk.NextRandomVector3OnSurface;
+			}
 
-            for(int i = 0; i  < 10; ++i)
+            for (int i = 0; i < count; ++i)
             {
-                gameObjectFactory.CreateRandom(S.trees, levelDataChunk.NextRandomVector3OnSurface);
+                gameObjectFactory.CreateRandom(gameObjectTemplates, randomVector3Provider.Invoke());
             }
         }
-
-        internal void CreateTestHouses()
-        {
-            var chunkOrigin = levelDataChunk.OriginAtDefaultElevation;
-
-            for (int i = 0; i < 5; ++i)
-            {
-                gameObjectFactory.CreateRandom(S.houses, levelDataChunk.NextRandomVector3OnSurface);
-            }
-        }
-
 
         internal void CreateGameObjects()
         {
-            //CreateTestObjects();
-            CreateTestTrees();
-            CreateTestHouses();
+            CreateRandomObjects(10, A.houses);
+            CreateRandomObjects(100, A.trees);
+            CreateRandomObjects(100, A.flowers);
+            CreateRandomObjects(10, A.humans);
+            CreateRandomObjects(6, A.animals);
+            CreateRandomObjects(10, A.rocks);
+            CreateRandomObjects(5, A.clouds, () => levelDataChunk.NextRandomVector3OnTheClouds);
         }
 
         public void CreateTerrain()

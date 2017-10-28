@@ -278,6 +278,7 @@ namespace Pamux.Lib.LevelData.Generator
         }
 
         public Vector3 OriginAtDefaultElevation { get { return S.GetVector3AtDefaultElevation(X, Z); } }
+		public Vector3 OriginAtCloudElevation { get { return S.GetVector3AtCloudElevation(X, Z); } }
 
         public Vector3 NorthWestUnit{ get { return new Vector3(-1.0f, 0, +1.0f); } }
         public Vector3 NorthEastUnit { get { return new Vector3(-1.0f, 0, +1.0f); } }
@@ -308,15 +309,31 @@ namespace Pamux.Lib.LevelData.Generator
             get
             {
                 var origin = OriginAtDefaultElevation;
-                var halfHypotenuse = (float)Math.Sqrt(S.Length * S.Length) / 2;
-                var randomDistanceX = (float)G.Random.NextDouble() * halfHypotenuse;
-                var randomDistanceZ = (float)G.Random.NextDouble() * halfHypotenuse;
+                var hypotenuse = (float)Math.Sqrt(S.Length * S.Length);
+                var randomDistanceX = (float)G.Random.NextDouble() * hypotenuse;
+                var randomDistanceZ = (float)G.Random.NextDouble() * hypotenuse;
 
                 var randomPoint = origin + new Vector3(randomDistanceX, 0f, randomDistanceZ);
 
                 var elevation = ChunkCache.GetElevation(randomPoint);
 
                 return new Vector3(randomPoint.x, elevation, randomPoint.z); 
+            }
+        }
+
+		
+		public Vector3 NextRandomVector3OnTheClouds
+        {
+            get
+            {
+                var origin = OriginAtCloudElevation;
+                var hypotenuse = (float)Math.Sqrt(S.Length * S.Length);
+                var randomDistanceX = (float)G.Random.NextDouble() * hypotenuse;
+                var randomDistanceZ = (float)G.Random.NextDouble() * hypotenuse;
+                //var randomElevation = (float)G.Random.NextDouble() * origin.y/10f;
+				
+
+                return origin + new Vector3(randomDistanceX, 0f, randomDistanceZ);
             }
         }
 
