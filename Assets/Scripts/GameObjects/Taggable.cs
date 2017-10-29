@@ -129,6 +129,18 @@ public class Taggable : MonoBehaviour
         }
     }
 
+    internal bool HasAnyTag(string[] tags)
+    {
+        foreach (var tag in tags)
+        {
+            if (HasTag(tag))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public bool HasTag(string tag)
     {
         foreach (var aTag in Tags)

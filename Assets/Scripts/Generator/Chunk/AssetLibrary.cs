@@ -13,21 +13,21 @@ namespace Pamux.Lib.LevelData.Generator
         [SerializeField]
         private GameObject[] prefabs;
 
-        public GameObject[] Trees => GetTaggedPrefabs("tree");
-        public GameObject[] Flowers => GetTaggedPrefabs("flower");
-        public GameObject[] Animals => GetTaggedPrefabs("animal");
-        public GameObject[] LandAnimals => GetTaggedPrefabs("land", Animals);
-        public GameObject[] SnowyTrees => GetTaggedPrefabs("snow", Trees);
-        public GameObject[] Cactus => GetTaggedPrefabs("cactus");
-        public GameObject[] People => GetTaggedPrefabs("people");
-        public GameObject[] Rocks => GetTaggedPrefabs("rock");
+        public GameObject[] Trees => GetTaggedPrefabs(new string[] { "tree" }, new string[] { "leaf" });
+        public GameObject[] Flowers => GetTaggedPrefabs(new string[] { "flower" }, new string[] { });
+        public GameObject[] Animals => GetTaggedPrefabs(new string[] { "animal" }, new string[] { });
+        public GameObject[] LandAnimals => GetTaggedPrefabs(new string[] { "animal", "land" }, new string[] { });
+        public GameObject[] SnowyTrees => GetTaggedPrefabs(new string[] { "snow" }, new string[] { }, Trees);
+        public GameObject[] Cactus => GetTaggedPrefabs(new string[] { "cactus" }, new string[] { });
+        public GameObject[] People => GetTaggedPrefabs(new string[] { "people" }, new string[] { });
+        public GameObject[] Rocks => GetTaggedPrefabs(new string[] { "rock", "stone" }, new string[] { });
 
-        public GameObject[] GetTaggedPrefabs(string tag)
+        public GameObject[] GetTaggedPrefabs(string[] withTags, string[] butNotWithTags)
         {
-            return GetTaggedPrefabs(tag, prefabs);
+            return GetTaggedPrefabs(withTags, butNotWithTags, prefabs);
         }
 
-        public static GameObject[] GetTaggedPrefabs(string tag, GameObject[] prefabs)
+        public static GameObject[] GetTaggedPrefabs(string[] withTags, string[] butNotWithTags, GameObject[] prefabs)
         {
             var result = new List<GameObject>();
             if (prefabs == null)
@@ -46,7 +46,8 @@ namespace Pamux.Lib.LevelData.Generator
                 {
                     continue;
                 }
-                if (taggable.HasTag(tag))
+
+                if (taggable.HasAnyTag(withTags) && !taggable.HasAnyTag(butNotWithTags))
                 {
                     result.Add(prefab);
                 }
