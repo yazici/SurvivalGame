@@ -18,9 +18,12 @@ namespace Pamux.Lib.LevelData.Generator
         public GameObject[] Animals => GetTaggedPrefabs(new string[] { "animal" }, new string[] { });
         public GameObject[] LandAnimals => GetTaggedPrefabs(new string[] { "animal", "land" }, new string[] { });
         public GameObject[] SnowyTrees => GetTaggedPrefabs(new string[] { "snow" }, new string[] { }, Trees);
+        public GameObject[] Fire => GetTaggedPrefabs(new string[] { "fire" }, new string[] { });
+        public GameObject[] GreenFire => GetTaggedPrefabs(new string[] { "green" }, new string[] { }, Fire);
         public GameObject[] Cactus => GetTaggedPrefabs(new string[] { "cactus" }, new string[] { });
         public GameObject[] People => GetTaggedPrefabs(new string[] { "people" }, new string[] { });
         public GameObject[] Rocks => GetTaggedPrefabs(new string[] { "rock", "stone" }, new string[] { });
+        public GameObject[] Houses => GetTaggedPrefabs(new string[] { "house" }, new string[] { });
 
         public GameObject[] GetTaggedPrefabs(string[] withTags, string[] butNotWithTags)
         {

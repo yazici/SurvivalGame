@@ -6,6 +6,14 @@ using UnityEngine;
 
 namespace Pamux.Lib.LevelData.Generator
 {
+
+    [Serializable]
+    public class BiomeData
+    {
+        public string Name;
+        public Texture2D texture;
+    }
+
     public class LevelDataMaps
     {
         public static LevelDataGeneratorSettings S { get { return LevelDataGeneratorSettings.Instance; } }
@@ -16,7 +24,6 @@ namespace Pamux.Lib.LevelData.Generator
         public readonly float[,] MoistureMap;
         public readonly int[,] BiomeMap;
 
-        private const int SplatTextureCount = 2;
         public readonly float[,,] SplatMap;
 
 
@@ -29,19 +36,17 @@ namespace Pamux.Lib.LevelData.Generator
             TemperatureMap = new float[S.TemperatureMapResolution, S.TemperatureMapResolution];
             MoistureMap = new float[S.MoistureMapResolution, S.MoistureMapResolution];
 
-            SplatPrototypes = new SplatPrototype[]
-            {
-                new SplatPrototype
-                {
-                    texture = S.FlatTexture
-                },
-                new SplatPrototype
-                {
-                    texture = S.SteepTexture
-                }
-            };
+            SplatPrototypes = new SplatPrototype[S.Biomes.Count()];
 
-            SplatMap = new float[S.AlphaMapResolution, S.AlphaMapResolution, SplatPrototypes.Count()];
+            for (int i = 0; i < S.Biomes.Count(); ++i)
+            {
+                SplatPrototypes[i] = new SplatPrototype
+                {
+                    texture = S.Biomes[i].texture
+                };
+            }
+
+            SplatMap = new float[S.AlphaMapResolution, S.AlphaMapResolution, S.Biomes.Count()];
         }
 
         public static LevelDataMaps CreateAndGenerate(int x, int z)
@@ -59,14 +64,7 @@ namespace Pamux.Lib.LevelData.Generator
                     levelDataMaps.HeightMap[zRes, xRes] = 0;// noise;
 
                     noise = G.NoiseMaker.GetBiomeNoise(xCoordinate, zCoordinate);
-                    if (noise > 0.5)
-                    {
-                        levelDataMaps.BiomeMap[zRes, xRes] = 0;
-                    }
-                    else
-                    {
-                        levelDataMaps.BiomeMap[zRes, xRes] = 1;
-                    }
+                    levelDataMaps.BiomeMap[zRes, xRes] = GetBiomeId(noise);
 
                     noise = G.NoiseMaker.GetTemperatureNoise(xCoordinate, zCoordinate);
                     levelDataMaps.TemperatureMap[zRes, xRes] = noise;
@@ -77,6 +75,21 @@ namespace Pamux.Lib.LevelData.Generator
             }
 
             return levelDataMaps;
+        }        
+
+        private static int GetBiomeId(float noise)
+        {
+            float rangeSize = 1f / S.Biomes.Count();
+            float value = rangeSize;
+            for (int i = 0; i < S.Biomes.Count(); ++i)
+            {
+                if (noise < value)
+                {
+                    return i;
+                }
+                value += rangeSize;
+            }
+            return S.Biomes.Count() - 1;
         }
     }
 }

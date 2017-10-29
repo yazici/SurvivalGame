@@ -22,10 +22,15 @@ namespace Pamux.Lib.LevelData.Generator
 
         public float RandomHeight => MinHeight + ((float) G.Random.NextDouble() * HeightWindow);
 
-        public GameObject RandomTemplate => Templates[G.Random.Next(Templates.Length)];
+        public GameObject RandomTemplate => Templates.Length == 0 ? null : Templates[G.Random.Next(Templates.Length)];
 
         public Vector3 GetRandomScale(GameObject prefab)
         {
+            if (HeightWindow == 0)
+            {
+                return Vector3.one;
+            }
+
             var meshFilter = prefab.GetComponent<MeshFilter>();
             if (meshFilter == null)
             {
@@ -37,6 +42,7 @@ namespace Pamux.Lib.LevelData.Generator
             {
                 return Vector3.one;
             }
+
 
             //Debug.Log($"Bounds: {mesh.bounds.size.x},{mesh.bounds.size.y},{mesh.bounds.size.z}");
             var scale = RandomHeight / mesh.bounds.size.y;

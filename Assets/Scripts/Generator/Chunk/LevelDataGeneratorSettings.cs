@@ -24,10 +24,7 @@ namespace Pamux.Lib.LevelData.Generator
 
         public int Seed { get; private set; }
 
-        public Texture2D FlatTexture;
-
-        public Texture2D SteepTexture;
-
+        public BiomeData[] Biomes;
         public Material TerrainMaterial;
 
         public float DefaultGameObjectElevation = 1.0f;

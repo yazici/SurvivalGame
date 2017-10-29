@@ -6,7 +6,7 @@ using Pamux.Utilities;
 
 public class GameManager : Singleton<GameManager>
 {
-    void Start () {
+    void Start() {
         ScreenLogger.Instance.ShowLog = true;
     }
 }

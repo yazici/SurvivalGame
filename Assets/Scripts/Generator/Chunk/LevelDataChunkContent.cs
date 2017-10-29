@@ -69,15 +69,20 @@ namespace Pamux.Lib.LevelData.Generator
             //CreateRandomObjects(10, );
 
             CreateRandomObjects(new ObjectCreationParameters { Templates = A.SnowyTrees, Count = 10, MinHeight = 4.0f, MaxHeight = 8.0f });
-            //CreateRandomObjects(new ObjectCreationParameters { Templates = A.Trees, Count = 10, MinHeight = 3.0f, MaxHeight = 6.0f });
+            CreateRandomObjects(new ObjectCreationParameters { Templates = A.GreenFire, Count = 1, MinHeight = 1.0f, MaxHeight = 1.0f });
+            CreateRandomObjects(new ObjectCreationParameters { Templates = A.Fire, Count = 1, MinHeight = 1.0f, MaxHeight = 1.0f });
+            CreateRandomObjects(new ObjectCreationParameters { Templates = A.Flowers, Count = 15, MinHeight = 0.1f, MaxHeight = 0.3f });
+            CreateRandomObjects(new ObjectCreationParameters { Templates = A.Animals, Count = 1, MinHeight = 1f, MaxHeight = 1f });
+            CreateRandomObjects(new ObjectCreationParameters { Templates = A.People, Count = 2, MinHeight = 1f, MaxHeight = 1f });
+            CreateRandomObjects(new ObjectCreationParameters { Templates = A.Cactus, Count = 1, MinHeight = 1f, MaxHeight = 3f });
+            CreateRandomObjects(new ObjectCreationParameters { Templates = A.Rocks, Count = 2, MinHeight = 1f, MaxHeight = 3f });
+            CreateRandomObjects(new ObjectCreationParameters { Templates = A.Houses, Count = 2, MinHeight = 6f, MaxHeight = 12f });
 
-            //CreateRandomObjects(50, A.Flowers);
+
             //CreateRandomObjects(10, A.LandAnimals);
-            //CreateRandomObjects(10, A.Cactus);
-            //CreateRandomObjects(10, A.People);
 
             //CreateRandomObjects(6, A.animals);
-            //CreateRandomObjects(10, A.Rocks);
+
             //CreateRandomObjects(5, A.clouds, () => levelDataChunk.NextRandomVector3OnTheClouds);
         }
 
@@ -98,6 +103,7 @@ namespace Pamux.Lib.LevelData.Generator
 
             TerrainData.size = new Vector3(S.Length, S.Height, S.Length);
             var newTerrainGameObject = Terrain.CreateTerrainGameObject(TerrainData);
+            
             newTerrainGameObject.transform.position = new Vector3(levelDataChunk.X * S.Length, 0, levelDataChunk.Z * S.Length);
 
             Terrain = newTerrainGameObject.GetComponent<Terrain>();
@@ -139,17 +145,12 @@ namespace Pamux.Lib.LevelData.Generator
                     //splatMap[zRes, xRes, 1] = steepnessNormalized;
                     */
 
+                    for (int i = 0; i < S.Biomes.Count(); ++i)
+                    { 
+                        LevelDataMaps.SplatMap[zRes, xRes, i] = 0.0f;
+                    }
 
-                    if (LevelDataMaps.BiomeMap[zRes, xRes] == 0)
-                    {
-                        LevelDataMaps.SplatMap[zRes, xRes, 0] = 0.0f;
-                        LevelDataMaps.SplatMap[zRes, xRes, 1] = 1.0f;
-                    }
-                    else
-                    {
-                        LevelDataMaps.SplatMap[zRes, xRes, 0] = 1.0f;
-                        LevelDataMaps.SplatMap[zRes, xRes, 1] = 0.0f;
-                    }
+                    LevelDataMaps.SplatMap[zRes, xRes, LevelDataMaps.BiomeMap[zRes, xRes]] = 1.0f;
                 }
             }
 

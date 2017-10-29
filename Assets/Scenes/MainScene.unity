@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657886, g: 0.4964127, b: 0.57481724, a: 1}
+  m_IndirectSpecularColor: {r: 0.44308284, g: 0.4922868, b: 0.57199675, a: 1}
 --- !u!157 &4
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -171,25 +171,10 @@ Prefab:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 11469404, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 2}
-      propertyPath: m_GravityMultiplier
+    - target: {fileID: 114923975247681786, guid: 7737647c22c1fc64a88d5cd030c352ce,
+        type: 2}
+      propertyPath: smooth
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 149790, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 2}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 11469404, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 2}
-      propertyPath: m_JumpPower
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11469404, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 2}
-      propertyPath: m_MoveSpeedMultiplier
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 149790, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 2}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 2}
@@ -198,72 +183,7 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 408730, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 2}
   m_PrefabInternal: {fileID: 107545497}
---- !u!4 &242395938 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4994108750495930, guid: ceb2d7590fcd4ab4f845c99eebea25fd,
-    type: 2}
-  m_PrefabInternal: {fileID: 1688446018}
---- !u!1 &892834734
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 892834735}
-  - component: {fileID: 892834736}
-  m_Layer: 0
-  m_Name: ScreenLogger
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &892834735
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 892834734}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 242395938}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &892834736
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 892834734}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47bc5130f0b1595418956575d1d75556, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShowLog: 1
-  ShowInEditor: 1
-  AdvancedButtons: 0
-  Height: 0.5
-  Width: 0.5
-  Margin: 20
-  AnchorPosition: 2
-  FontSize: 14
-  ScrollSpeed: 10
-  BackgroundOpacity: 0.5
-  BackgroundColor: {r: 0, g: 0, b: 0, a: 0.5}
-  LogMessages: 1
-  LogWarnings: 1
-  LogErrors: 1
-  MessageColor: {r: 1, g: 1, b: 1, a: 1}
-  WarningColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  ErrorColor: {r: 1, g: 0.5, b: 0.5, a: 1}
-  StackTraceMessages: 0
-  StackTraceWarnings: 0
-  StackTraceErrors: 1
---- !u!1001 &1688446018
+--- !u!1001 &110109356
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -302,14 +222,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114508516972182448, guid: ceb2d7590fcd4ab4f845c99eebea25fd,
-        type: 2}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 107545498}
     - target: {fileID: 114308287507540844, guid: ceb2d7590fcd4ab4f845c99eebea25fd,
         type: 2}
       propertyPath: Player
+      value: 
+      objectReference: {fileID: 107545498}
+    - target: {fileID: 114508516972182448, guid: ceb2d7590fcd4ab4f845c99eebea25fd,
+        type: 2}
+      propertyPath: player
       value: 
       objectReference: {fileID: 107545498}
     m_RemovedComponents: []
