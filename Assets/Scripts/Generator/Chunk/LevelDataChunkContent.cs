@@ -44,12 +44,13 @@ namespace Pamux.Lib.LevelData.Generator
             }
         }
         
-        internal void CreateRandomObjects(int count, GameObject[] gameObjectTemplates, Func<Vector3> randomVector3Provider = null)
+        internal void CreateRandomObjects(ObjectCreationParameters parameters, Func<Vector3> randomVector3Provider = null)
         {
-			if (gameObjectTemplates == null)
-			{
-					throw new ArgumentNullException(nameof(gameObjectTemplates));
+			if (parameters.Templates == null)
+            { 
+                throw new ArgumentNullException(nameof(parameters.Templates));
 			}
+
             var chunkOrigin = levelDataChunk.OriginAtDefaultElevation;
 			
 			if (randomVector3Provider == null)
@@ -57,23 +58,26 @@ namespace Pamux.Lib.LevelData.Generator
 				randomVector3Provider = () => levelDataChunk.NextRandomVector3OnSurface;
 			}
 
-            for (int i = 0; i < count; ++i)
+            for (int i = 0; i < parameters.Count; ++i)
             {
-                gameObjectFactory.CreateRandom(gameObjectTemplates, randomVector3Provider.Invoke());
+                gameObjectFactory.CreateRandom(parameters, randomVector3Provider.Invoke());
             }
         }
 
         internal void CreateGameObjects()
         {
             //CreateRandomObjects(10, );
-            CreateRandomObjects(10, A.SnowyTrees);
-            CreateRandomObjects(50, A.Flowers);
-            CreateRandomObjects(10, A.Animals);
-            CreateRandomObjects(10, A.Cactus);
-            CreateRandomObjects(10, A.People);
-            //CreateRandomObjects(10, A.peopleNotAnimated);
+
+            CreateRandomObjects(new ObjectCreationParameters { Templates = A.SnowyTrees, Count = 10, MinHeight = 4.0f, MaxHeight = 8.0f });
+            //CreateRandomObjects(new ObjectCreationParameters { Templates = A.Trees, Count = 10, MinHeight = 3.0f, MaxHeight = 6.0f });
+
+            //CreateRandomObjects(50, A.Flowers);
+            //CreateRandomObjects(10, A.LandAnimals);
+            //CreateRandomObjects(10, A.Cactus);
+            //CreateRandomObjects(10, A.People);
+
             //CreateRandomObjects(6, A.animals);
-            //CreateRandomObjects(10, A.rocks);
+            //CreateRandomObjects(10, A.Rocks);
             //CreateRandomObjects(5, A.clouds, () => levelDataChunk.NextRandomVector3OnTheClouds);
         }
 

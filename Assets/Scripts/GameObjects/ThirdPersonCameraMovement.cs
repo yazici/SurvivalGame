@@ -9,7 +9,6 @@ namespace Assets
     public class ThirdPersonCameraMovement : MonoBehaviour
     {
         public Transform player;
-        public Camera camera;
         public Vector3 offset = new Vector3(0f, 5f, 6f);
         private bool needsToLookAtPlayer = true;
 
@@ -27,12 +26,17 @@ namespace Assets
 
         private void LateUpdate()
         {
-            camera.transform.position = player.position + offset;
+            if (!player.gameObject.active)
+            {
+                return;
+            }
+
+            this.transform.position = player.position + offset;
 
             if (needsToLookAtPlayer)
             {
                 needsToLookAtPlayer = false;
-                camera.transform.LookAt(player);
+                this.transform.LookAt(player);
             }
         }
     }

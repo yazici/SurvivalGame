@@ -52,7 +52,7 @@ namespace Assets.Scripts.GameObjects
             return o;
         }
 
-        public GameObject CreatePrefab(GameObject prefab, Vector3 position)
+        public GameObject CreatePrefab(GameObject prefab, Vector3 position, Vector3 scale)
         {
             if (prefab == null)
             {
@@ -64,11 +64,13 @@ namespace Assets.Scripts.GameObjects
 
             // Resources folder
             //return GameObject.Instantiate((GameObject)Resources.Load(prefabName), position, Quaternion.identity);
+           
 
             var o = GameObject.Instantiate(prefab, position, Quaternion.identity);
-
+            
             if (o != null)
             {
+                o.transform.localScale = scale;
                 o.transform.position = position;
                 levelDataChunkContent.GameObjects.Add(o);
             }
@@ -104,14 +106,8 @@ namespace Assets.Scripts.GameObjects
             return o;
         }
 
-        public GameObject CreateRandom(GameObject[] gameObjects, Vector3 position)
+        public GameObject CreateRandom(ObjectCreationParameters parameters, Vector3 position)
         {
-            if (gameObjects == null || gameObjects.Length == 0)
-            {
-                return null;
-            }
-
-
             // Editor only
             //var prefab = AssetDatabase.LoadAssetAtPath("Assets/something.prefab", typeof(GameObject));
             //var o = Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;
@@ -119,8 +115,17 @@ namespace Assets.Scripts.GameObjects
             // Resources folder
             //return GameObject.Instantiate((GameObject)Resources.Load(prefabName), position, Quaternion.identity);
 
-            //turn CreatePrefab(gameObjects[0], position);
-            return CreatePrefab(gameObjects[G.Random.Next(gameObjects.Length)], position);
+            var prefab = parameters.RandomTemplate;
+            if (prefab == null)
+            {
+                return null;
+            }
+
+            var scale = parameters.GetRandomScale(prefab);
+
+            
+
+            return CreatePrefab(prefab, position, scale);
         }
 
         internal GameObject Create(GameObjectTypes type, int x, int z)

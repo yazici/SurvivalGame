@@ -16,9 +16,11 @@ namespace Pamux.Lib.LevelData.Generator
         public GameObject[] Trees => GetTaggedPrefabs("tree");
         public GameObject[] Flowers => GetTaggedPrefabs("flower");
         public GameObject[] Animals => GetTaggedPrefabs("animal");
+        public GameObject[] LandAnimals => GetTaggedPrefabs("land", Animals);
         public GameObject[] SnowyTrees => GetTaggedPrefabs("snow", Trees);
         public GameObject[] Cactus => GetTaggedPrefabs("cactus");
         public GameObject[] People => GetTaggedPrefabs("people");
+        public GameObject[] Rocks => GetTaggedPrefabs("rock");
 
         public GameObject[] GetTaggedPrefabs(string tag)
         {
@@ -35,6 +37,10 @@ namespace Pamux.Lib.LevelData.Generator
             
             foreach (var prefab in prefabs)
             {
+                if (prefab == null)
+                {
+                    continue;
+                }
                 var taggable = prefab.GetComponent<Taggable>();
                 if (taggable == null)
                 {
@@ -125,29 +131,6 @@ namespace Pamux.Lib.LevelData.Generator
         private void AttachPrefabs()
         {
             prefabs = GetAllPrefabs();
-        }
-
-        [ContextMenu("Show Snowy Trees")]
-        private void ShowTrees()
-        {
-            var trees = GetTaggedPrefabs("SEA");
-            var snowyTrees = GetTaggedPrefabs("snow", trees);
-
-            float x = 0;
-            float z = 0;
-
-            foreach (var go in trees)
-            {
-                Vector3 pos = new Vector3(x, 0, z);
-                var o = GameObject.Instantiate(go, pos, Quaternion.identity);
-
-                x += 10f;
-                if (x > 100.0f)
-                {
-                    x = 0;
-                    z += 10f;
-                }
-            }
         }
 
 #endif
