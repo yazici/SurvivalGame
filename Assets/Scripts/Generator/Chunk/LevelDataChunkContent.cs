@@ -65,13 +65,21 @@ namespace Pamux.Lib.LevelData.Generator
 
         internal void CreateGameObjects()
         {
-            CreateRandomObjects(10, A.houses);
-            CreateRandomObjects(100, A.trees);
-            CreateRandomObjects(100, A.flowers);
-            CreateRandomObjects(10, A.humans);
-            CreateRandomObjects(6, A.animals);
-            CreateRandomObjects(10, A.rocks);
-            CreateRandomObjects(5, A.clouds, () => levelDataChunk.NextRandomVector3OnTheClouds);
+            //CreateRandomObjects(10, );
+            CreateRandomObjects(10, A.SnowyTrees);
+            CreateRandomObjects(50, A.Flowers);
+            CreateRandomObjects(10, A.Animals);
+            CreateRandomObjects(10, A.Cactus);
+            CreateRandomObjects(10, A.People);
+            //CreateRandomObjects(10, A.peopleNotAnimated);
+            //CreateRandomObjects(6, A.animals);
+            //CreateRandomObjects(10, A.rocks);
+            //CreateRandomObjects(5, A.clouds, () => levelDataChunk.NextRandomVector3OnTheClouds);
+        }
+
+        private void CreateRandomObjects(int v, object flowers)
+        {
+            throw new NotImplementedException();
         }
 
         public void CreateTerrain()
