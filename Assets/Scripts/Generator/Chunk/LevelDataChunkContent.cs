@@ -66,8 +66,6 @@ namespace Pamux.Lib.LevelData.Generator
 
         internal void CreateGameObjects()
         {
-            //CreateRandomObjects(10, );
-
             CreateRandomObjects(new ObjectCreationParameters { Templates = A.SnowyTrees, Count = 10, MinHeight = 4.0f, MaxHeight = 8.0f });
             CreateRandomObjects(new ObjectCreationParameters { Templates = A.GreenFire, Count = 1, MinHeight = 1.0f, MaxHeight = 1.0f });
             CreateRandomObjects(new ObjectCreationParameters { Templates = A.Fire, Count = 1, MinHeight = 1.0f, MaxHeight = 1.0f });
@@ -77,18 +75,6 @@ namespace Pamux.Lib.LevelData.Generator
             CreateRandomObjects(new ObjectCreationParameters { Templates = A.Cactus, Count = 1, MinHeight = 1f, MaxHeight = 3f });
             CreateRandomObjects(new ObjectCreationParameters { Templates = A.Rocks, Count = 2, MinHeight = 1f, MaxHeight = 3f });
             CreateRandomObjects(new ObjectCreationParameters { Templates = A.Houses, Count = 2, MinHeight = 6f, MaxHeight = 12f });
-
-
-            //CreateRandomObjects(10, A.LandAnimals);
-
-            //CreateRandomObjects(6, A.animals);
-
-            //CreateRandomObjects(5, A.clouds, () => levelDataChunk.NextRandomVector3OnTheClouds);
-        }
-
-        private void CreateRandomObjects(int v, object flowers)
-        {
-            throw new NotImplementedException();
         }
 
         public void CreateTerrain()

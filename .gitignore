@@ -1,0 +1,8 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Library
+/Assets/3rdParty
+/Assets/Unity
+/.vs/SurvivalGame/v15

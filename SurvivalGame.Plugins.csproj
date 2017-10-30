@@ -1,0 +1,529 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F0EC2DFA-861C-75D8-0B24-3329E5E8A721}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>Assembly-CSharp-firstpass.dll</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+    <CompilerResponseFile></CompilerResponseFile>
+    <UnityProjectType>GamePlugins:3</UnityProjectType>
+    <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
+    <UnityVersion>2017.1.1f1</UnityVersion>
+    <RootNamespace></RootNamespace>
+    <LangVersion>6</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoConfig>true</NoConfig>
+    <NoStdLib>true</NoStdLib>
+    <AddAdditionalExplicitAssemblyReferences>false</AddAdditionalExplicitAssemblyReferences>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\UnityVS_bin\Debug\</OutputPath>
+    <IntermediateOutputPath>Temp\UnityVS_obj\Debug\</IntermediateOutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_1_1;UNITY_2017_1;UNITY_2017;PLATFORM_ARCH_64;UNITY_64;UNITY_ANALYTICS;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_GENERICS;ENABLE_PVR_GI;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_RUNTIME_NAVMESH_BUILDING;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_DIRECTOR;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_TIMELINE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_NATIVE_ARRAY;ENABLE_SPRITE_MASKING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;ENABLE_MONO_BDWGC;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_VIDEO;ENABLE_RMGUI;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_STYLE_SHEETS;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_EVENT_QUEUE;ENABLE_CLUSTERINPUT;ENABLE_VR;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_4_6;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_NATIVE_ARRAY_CHECKS;UNITY_TEAM_LICENSE;ENABLE_VSTU;CROSS_PLATFORM_INPUT</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\UnityVS_bin\Release\</OutputPath>
+    <IntermediateOutputPath>Temp\UnityVS_obj\Release\</IntermediateOutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DefineConstants>TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_1_1;UNITY_2017_1;UNITY_2017;PLATFORM_ARCH_64;UNITY_64;UNITY_ANALYTICS;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_GENERICS;ENABLE_PVR_GI;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_RUNTIME_NAVMESH_BUILDING;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_DIRECTOR;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_TIMELINE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_NATIVE_ARRAY;ENABLE_SPRITE_MASKING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;ENABLE_MONO_BDWGC;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_VIDEO;ENABLE_RMGUI;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_STYLE_SHEETS;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_EVENT_QUEUE;ENABLE_CLUSTERINPUT;ENABLE_VR;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_4_6;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_NATIVE_ARRAY_CHECKS;UNITY_TEAM_LICENSE;ENABLE_VSTU;CROSS_PLATFORM_INPUT</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib">
+      <HintPath>C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.5\mscorlib.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <HintPath>C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.5\System.dll</HintPath>
+    </Reference>
+    <Reference Include="System.XML">
+      <HintPath>C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.5\System.XML.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core">
+      <HintPath>C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.5\System.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp">
+      <HintPath>C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.5\Microsoft.CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <HintPath>C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.5\System.Runtime.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <HintPath>C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\4.5\System.Xml.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor">
+      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Networking">
+      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TestRunner">
+      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Timeline">
+      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Analytics">
+      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.HoloLens">
+      <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
+    </Reference>
+    <Reference Include="EasyPolyMapCore">
+      <HintPath>Assets/3rdParty/EasyPolyMap/Code/EasyPolyMapCore.dll</HintPath>
+    </Reference>
+    <Reference Include="LitJson">
+      <HintPath>Assets/3rdParty/EasyPolyMap/3rdParty/LitJson.dll</HintPath>
+    </Reference>
+    <Reference Include="Managed/Mono.Cecil">
+      <HintPath>C:/Program Files/Unity/Editor/Data\Managed/Mono.Cecil.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\BMP\BmpCompression.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\BMP\BmpDecoder.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\BMP\BmpEncoder.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\BMP\BmpFileHeader.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\BMP\BmpInfoHeader.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\Common\BarcodeResult.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\Common\BarcodeResultFormat.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\Common\ExtendedImage.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\Common\ExtendedImage_Operations.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\Common\FlippingType.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\Common\GlobalSuppressions.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\Common\Helpers\Extensions.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\Common\Helpers\Guard.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\Common\IBarcodeReader.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\Common\IBarcodeReaderContract.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\Common\IImageFilter.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\Common\IImageFilterContract.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\Common\IImageResizer.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\Common\IImageResizerContract.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\Common\ImageBase.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\Common\ImageBase_Operations.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\Common\ImageFormatException.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\Common\ImageFrame.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\Common\ImageFrameCollection.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\Common\ImageProperty.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\Common\ImagePropertyCollection.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\Common\IO\Decoders.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\Common\IO\Encoders.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\Common\IO\IImageDecoder.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\Common\IO\IImageDecoderContract.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\Common\IO\IImageEncoder.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\Common\IO\IImageEncoderContract.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\Common\IO\UnsupportedImageFormatException.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\Common\Rectangle.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\Common\RotationType.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\Filtering\BilinearResizer.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\Filtering\BinarizerMode.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\Filtering\BlendingFilter.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\Filtering\Brightness.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\Filtering\Contrast.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\Filtering\GaussianBlur.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\Filtering\Grayscale.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\Filtering\GrayscaleBT709.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\Filtering\GrayscaleRMY.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\Filtering\Inverter.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\Filtering\MatrixFilter.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\Filtering\NearestNeighborResizer.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\Filtering\PrewittX.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\Filtering\PrewittY.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\Filtering\Sepia.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\Filtering\SobelX.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\Filtering\SobelY.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\Filtering\ZXingBarcodeReader.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\GIF\DisposalMethod.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\GIF\GifDecoder.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\GIF\GifGraphicsControlExtension.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\GIF\GifImageDescriptor.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\GIF\GifLogicalScreenDescriptor.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\GIF\GlobalSuppressions.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\GIF\LZWDecoder.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\FluxJpeg.Core\DCT.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\FluxJpeg.Core\DecodedJpeg.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\FluxJpeg.Core\Decoder\HuffmanTable.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\FluxJpeg.Core\Decoder\JpegComponent.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\FluxJpeg.Core\Decoder\JpegDecoder.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\FluxJpeg.Core\Decoder\JpegFrame.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\FluxJpeg.Core\Decoder\JpegHuffmanTable.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\FluxJpeg.Core\Decoder\JpegQuantizationTable.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\FluxJpeg.Core\Decoder\JpegScan.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\FluxJpeg.Core\Encoder\JpegEncoder.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\FluxJpeg.Core\FDCT.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\FluxJpeg.Core\Image.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\FluxJpeg.Core\IO\BinaryReader.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\FluxJpeg.Core\IO\BinaryWriter.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\FluxJpeg.Core\IO\JpegBinaryReader.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\FluxJpeg.Core\JpegMarker.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\FluxJpeg.Core\YCbCr.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\FluxJpeg.Core\ZigZag.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\JpegDecoder.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\JpegEncoder.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\BitmapDestination.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\BitStream.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\DensityUnit.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\Internal\bitread_perm_state.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\Internal\bitread_working_state.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\Internal\ComponentBuffer.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\Internal\d_derived_tbl.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\Internal\huff_entropy_decoder.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\Internal\huff_entropy_encoder.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\Internal\J_BUF_MODE.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\Internal\jpeg_c_coef_controller.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\Internal\jpeg_c_main_controller.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\Internal\jpeg_c_prep_controller.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\Internal\jpeg_color_converter.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\Internal\jpeg_color_deconverter.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\Internal\jpeg_color_quantizer.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\Internal\jpeg_comp_master.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\Internal\jpeg_d_coef_controller.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\Internal\jpeg_d_main_controller.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\Internal\jpeg_d_post_controller.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\Internal\jpeg_decomp_master.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\Internal\jpeg_downsampler.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\Internal\jpeg_entropy_decoder.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\Internal\jpeg_entropy_encoder.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\Internal\jpeg_forward_dct.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\Internal\jpeg_input_controller.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\Internal\jpeg_inverse_dct.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\Internal\jpeg_marker_reader.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\Internal\jpeg_marker_writer.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\Internal\jpeg_scan_info.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\Internal\jpeg_upsampler.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\Internal\JpegUtils.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\Internal\my_1pass_cquantizer.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\Internal\my_2pass_cquantizer.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\Internal\my_c_coef_controller.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\Internal\my_destination_mgr.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\Internal\my_merged_upsampler.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\Internal\my_source_mgr.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\Internal\my_trans_c_coef_controller.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\Internal\my_upsampler.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\Internal\phuff_entropy_decoder.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\Internal\phuff_entropy_encoder.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\J_COLOR_SPACE.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\J_DCT_METHOD.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\J_DITHER_MODE.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\J_MESSAGE_CODE.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\JBLOCK.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\JHUFF_TBL.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\jpeg_common_struct.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\jpeg_component_info.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\jpeg_compress_struct.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\jpeg_decompress_struct.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\jpeg_destination_mgr.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\jpeg_error_mgr.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\JPEG_MARKER.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\jpeg_marker_struct.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\jpeg_progress_mgr.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\jpeg_source_mgr.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\JpegConstants.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\JQUANT_TBL.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\jvirt_array.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Classic\ReadResult.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\CompressionParameters.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\DecompressionParameters.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\DecompressorToJpegImage.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Enumerations.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\IDecompressDestination.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\IRawImage.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Jpeg.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\JpegImage.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\RawImage.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Sample.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\SampleRow.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\JPG\LibJpeg\Utils.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\MissingAPIs\Color.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\MissingAPIs\Contract.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\MissingAPIs\ContractClassForAttribute.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\MissingAPIs\ContractVerificationAttribute.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\MissingAPIs\ObservableCollection.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\MissingAPIs\OpenReadCompletedEventArgs.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\MissingAPIs\OpenReadCompletedEventHandler.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\MissingAPIs\Point.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\MissingAPIs\Pure.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\MissingAPIs\Rect.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\MissingAPIs\Size.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\MissingAPIs\StreamResourceInfo.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\PNG\GlobalSuppressions.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\PNG\GrayscaleReader.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\PNG\IColorReader.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\PNG\PaletteIndexReader.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\PNG\PngChunk.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\PNG\PngColorTypeInformation.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\PNG\PngDecoder.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\PNG\PngEncoder.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\PNG\PngHeader.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\ImageTools\PNG\TruecolorReader.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\BZip2\BZip2.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\BZip2\BZip2Constants.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\BZip2\BZip2Exception.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\BZip2\BZip2InputStream.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\BZip2\BZip2OutputStream.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Checksums\Adler32.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Checksums\CRC32.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Checksums\IChecksum.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Checksums\StrangeCRC.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Core\FileSystemScanner.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Core\INameTransform.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Core\IScanFilter.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Core\NameFilter.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Core\PathFilter.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Core\StreamUtils.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Core\WindowsPathUtils.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Encryption\PkzipClassic.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Encryption\ZipAESStream.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Encryption\ZipAESTransform.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\GZip\GZIPConstants.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\GZip\GZipException.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\GZip\GzipInputStream.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\GZip\GzipOutputStream.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Lzw\LzwConstants.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Lzw\LzwException.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Lzw\LzwInputStream.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Main.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\SharpZipBaseException.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Tar\InvalidHeaderException.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Tar\TarArchive.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Tar\TarBuffer.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Tar\TarEntry.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Tar\TarException.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Tar\TarHeader.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Tar\TarInputStream.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Tar\TarOutputStream.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Zip\Compression\Deflater.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Zip\Compression\DeflaterConstants.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Zip\Compression\DeflaterEngine.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Zip\Compression\DeflaterHuffman.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Zip\Compression\DeflaterPending.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Zip\Compression\Inflater.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Zip\Compression\InflaterDynHeader.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Zip\Compression\InflaterHuffmanTree.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Zip\Compression\PendingBuffer.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Zip\Compression\Streams\DeflaterOutputStream.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Zip\Compression\Streams\InflaterInputStream.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Zip\Compression\Streams\OutputWindow.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Zip\Compression\Streams\StreamManipulator.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Zip\FastZip.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Zip\IEntryFactory.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Zip\WindowsNameTransform.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Zip\ZipConstants.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Zip\ZipEntry.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Zip\ZipEntryFactory.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Zip\ZipException.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Zip\ZipExtraData.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Zip\ZipFile.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Zip\ZipHelperStream.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Zip\ZipInputStream.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Zip\ZipNameTransform.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\SharpZipLib\Zip\ZipOutputStream.cs" />
+    <Compile Include="Assets\Plugins\Reign\Shared\WinRT\WinRTPlugin.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\3rdParty\BrokenVector\FreeLowPolyPack\readme.txt" />
+    <None Include="Assets\3rdParty\BrokenVector\LowPolyShaders\README.txt" />
+    <None Include="Assets\3rdParty\BrokenVector\LowPolyShaders\Shaders\LowPolyPBRShader.shader" />
+    <None Include="Assets\3rdParty\BrokenVector\LowPolyShaders\Shaders\LowPolyUnlitShader.shader" />
+    <None Include="Assets\3rdParty\EasyPolyMap\3rdParty\readme.txt" />
+    <None Include="Assets\3rdParty\EasyPolyMap\Demos\AutumnVally\AutumnVally_data.txt" />
+    <None Include="Assets\3rdParty\EasyPolyMap\Demos\OtherDemoData\BasicTerrain.txt" />
+    <None Include="Assets\3rdParty\EasyPolyMap\Demos\OtherDemoData\BunnyIsland.txt" />
+    <None Include="Assets\3rdParty\EasyPolyMap\Demos\OtherDemoData\Circle_Island_Data.txt" />
+    <None Include="Assets\3rdParty\EasyPolyMap\Demos\SpringIsland\SpringIsland_data.txt" />
+    <None Include="Assets\3rdParty\EasyPolyMap\Documents\StepByStepDemoData.txt" />
+    <None Include="Assets\3rdParty\Free!Low_Poly_Boxy-Stylized_Trees#0\README.txt" />
+    <None Include="Assets\3rdParty\Low Poly Buildings Lite\ReadMe.txt" />
+    <None Include="Assets\3rdParty\Low Poly Strategy Prototyper\Plugins &amp; Scripts\GeometryFXParticles_DEMO\Shaders\ParticleAlphaBlendStroke.shader" />
+    <None Include="Assets\3rdParty\LowpolyVegetationPackFree\Readme.txt" />
+    <None Include="Assets\3rdParty\Lowpoly_Holiday_House\Readme.txt" />
+    <None Include="Assets\3rdParty\Poly City - Free Cartoon Pack\Readme.txt" />
+    <None Include="Assets\3rdParty\ProceduralToolkit\Examples\CharacterGenerator\Sprites\license.txt" />
+    <None Include="Assets\3rdParty\ProceduralToolkit\Examples\CharacterGenerator\names.txt" />
+    <None Include="Assets\3rdParty\ProceduralToolkit\Shaders\Debug\Debug Bitangents.shader" />
+    <None Include="Assets\3rdParty\ProceduralToolkit\Shaders\Debug\Debug Normals.shader" />
+    <None Include="Assets\3rdParty\ProceduralToolkit\Shaders\Debug\Debug Tangents.shader" />
+    <None Include="Assets\3rdParty\ProceduralToolkit\Shaders\Debug\Debug UV1.shader" />
+    <None Include="Assets\3rdParty\ProceduralToolkit\Shaders\Debug\Debug UV2.shader" />
+    <None Include="Assets\3rdParty\ProceduralToolkit\Shaders\Diffuse Vertex Color.shader" />
+    <None Include="Assets\3rdParty\ProceduralToolkit\Shaders\Gradient Skybox.shader" />
+    <None Include="Assets\3rdParty\ProceduralToolkit\Shaders\Specular Vertex Color.shader" />
+    <None Include="Assets\3rdParty\ProceduralToolkit\Shaders\Standard Vertex Color.shader" />
+    <None Include="Assets\3rdParty\ProceduralToolkit\Shaders\Unlit Vertex Color.shader" />
+    <None Include="Assets\3rdParty\RomanCityPack1Lite\README.txt" />
+    <None Include="Assets\3rdParty\SimpleCloudSystem by RM\Read Me.txt" />
+    <None Include="Assets\3rdParty\SimpleCloudSystem by RM\SCS Instructions.txt" />
+    <None Include="Assets\3rdParty\VertexColorTrees\Shaders\VertexColorUnlit.shader" />
+    <None Include="Assets\Scripts\LibNoise\COPYING.LESSER.txt" />
+    <None Include="Assets\Scripts\LibNoise\COPYING.txt" />
+    <None Include="Assets\Unity\Cinemachine\license.txt" />
+    <None Include="Assets\Unity\PostProcessing\Editor Resources\Monitors\HistogramCompute.compute" />
+    <None Include="Assets\Unity\PostProcessing\Editor Resources\Monitors\HistogramRender.shader" />
+    <None Include="Assets\Unity\PostProcessing\Editor Resources\Monitors\ParadeRender.shader" />
+    <None Include="Assets\Unity\PostProcessing\Editor Resources\Monitors\VectorscopeCompute.compute" />
+    <None Include="Assets\Unity\PostProcessing\Editor Resources\Monitors\VectorscopeRender.shader" />
+    <None Include="Assets\Unity\PostProcessing\Editor Resources\Monitors\WaveformCompute.compute" />
+    <None Include="Assets\Unity\PostProcessing\Editor Resources\Monitors\WaveformRender.shader" />
+    <None Include="Assets\Unity\PostProcessing\Editor Resources\UI\CurveBackground.shader" />
+    <None Include="Assets\Unity\PostProcessing\Editor Resources\UI\Trackball.shader" />
+    <None Include="Assets\Unity\PostProcessing\Resources\Bluenoise64\COPYING.txt" />
+    <None Include="Assets\Unity\PostProcessing\Resources\Bluenoise64\LICENSE.txt" />
+    <None Include="Assets\Unity\PostProcessing\Resources\Shaders\ACES.cginc" />
+    <None Include="Assets\Unity\PostProcessing\Resources\Shaders\AmbientOcclusion.cginc" />
+    <None Include="Assets\Unity\PostProcessing\Resources\Shaders\AmbientOcclusion.shader" />
+    <None Include="Assets\Unity\PostProcessing\Resources\Shaders\Blit.shader" />
+    <None Include="Assets\Unity\PostProcessing\Resources\Shaders\Bloom.cginc" />
+    <None Include="Assets\Unity\PostProcessing\Resources\Shaders\Bloom.shader" />
+    <None Include="Assets\Unity\PostProcessing\Resources\Shaders\BuiltinDebugViews.shader" />
+    <None Include="Assets\Unity\PostProcessing\Resources\Shaders\ColorGrading.cginc" />
+    <None Include="Assets\Unity\PostProcessing\Resources\Shaders\Common.cginc" />
+    <None Include="Assets\Unity\PostProcessing\Resources\Shaders\DepthOfField.cginc" />
+    <None Include="Assets\Unity\PostProcessing\Resources\Shaders\DepthOfField.shader" />
+    <None Include="Assets\Unity\PostProcessing\Resources\Shaders\DiskKernels.cginc" />
+    <None Include="Assets\Unity\PostProcessing\Resources\Shaders\EyeAdaptation.cginc" />
+    <None Include="Assets\Unity\PostProcessing\Resources\Shaders\EyeAdaptation.shader" />
+    <None Include="Assets\Unity\PostProcessing\Resources\Shaders\EyeHistogram.compute" />
+    <None Include="Assets\Unity\PostProcessing\Resources\Shaders\FXAA.shader" />
+    <None Include="Assets\Unity\PostProcessing\Resources\Shaders\FXAA3.cginc" />
+    <None Include="Assets\Unity\PostProcessing\Resources\Shaders\Fog.shader" />
+    <None Include="Assets\Unity\PostProcessing\Resources\Shaders\GrainGen.shader" />
+    <None Include="Assets\Unity\PostProcessing\Resources\Shaders\LutGen.shader" />
+    <None Include="Assets\Unity\PostProcessing\Resources\Shaders\MotionBlur.cginc" />
+    <None Include="Assets\Unity\PostProcessing\Resources\Shaders\MotionBlur.shader" />
+    <None Include="Assets\Unity\PostProcessing\Resources\Shaders\ScreenSpaceRaytrace.cginc" />
+    <None Include="Assets\Unity\PostProcessing\Resources\Shaders\ScreenSpaceReflection.shader" />
+    <None Include="Assets\Unity\PostProcessing\Resources\Shaders\TAA.cginc" />
+    <None Include="Assets\Unity\PostProcessing\Resources\Shaders\TAA.shader" />
+    <None Include="Assets\Unity\PostProcessing\Resources\Shaders\Tonemapping.cginc" />
+    <None Include="Assets\Unity\PostProcessing\Resources\Shaders\Uber.shader" />
+    <None Include="Assets\Unity\PostProcessing\Resources\Shaders\UberSecondPass.cginc" />
+    <None Include="Assets\Unity\PostProcessing\Utilities\CustomMotionTexture\Shaders\CustomMotionVectorTexture.shader" />
+    <None Include="Assets\Unity\SampleScenes\Shaders\Skybox-Procedural.shader" />
+    <None Include="Assets\Unity\Standard Assets\Cameras\CameraGuidelines.txt" />
+    <None Include="Assets\Unity\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
+    <None Include="Assets\Unity\Standard Assets\Characters\RollerBall\RollerBallGuidelines.txt" />
+    <None Include="Assets\Unity\Standard Assets\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />
+    <None Include="Assets\Unity\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
+    <None Include="Assets\Unity\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Readme.txt" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\BlendModesOverlay.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\BlurEffectConeTaps.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\CameraMotionBlur.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\CameraMotionBlurDX11.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\ChromaticAberrationShader.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrection3DLut.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrectionCurves.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrectionCurvesSimple.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrectionEffect.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrectionSelective.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\Contrast Stretch\Adaptation.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\Contrast Stretch\Apply.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\Contrast Stretch\Luminance.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\Contrast Stretch\MinMaxReduction.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\ContrastComposite.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\ConvertDepth.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\CreaseApply.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\EdgeDetectNormals.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\FisheyeShader.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\GlobalFog.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\GrayscaleEffect.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\MotionBlur.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\MotionBlurClear.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\NoiseAndGrain.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\NoiseAndGrainDX11.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderRGB.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderYUV.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\PrepareSunShaftsBlur.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\RadialBlur.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\SSAOShader.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\ScreenSpaceAmbientObscurance.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\ScreenSpaceRaytrace.cginc" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\SepiaToneEffect.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\ShowAlphaChannel.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\SimpleClear.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\SunShaftsComposite.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\Tonemapper.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\TwirlEffect.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\VignettingShader.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\VortexEffect.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\DLAA.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAA2.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAA3Console.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAAPreset2.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAAPreset3.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\NFAA.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\SSAA.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\Blend.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendForBloom.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlurAndFlares.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BrightPassFilter.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BrightPassFilter2.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\LensFlareCreate.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\MobileBloom.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\MobileBlur.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\MultiPassHollywoodFlares.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\SeparableBlurPlus.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\VignetteShader.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\Bokeh34.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\DepthOfField34.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\DepthOfFieldDX11.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\DepthOfFieldScatter.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\SeparableBlur.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\SeparableWeightedBlurDof34.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\TiltShiftHdrLensBlur.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ImageEffects\Shaders\frag_ao.cginc" />
+    <None Include="Assets\Unity\Standard Assets\Effects\Projectors\Guidelines.txt" />
+    <None Include="Assets\Unity\Standard Assets\Effects\Projectors\Shaders\ProjectorLight.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\Projectors\Shaders\ProjectorMultiply.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\TessellationShaders\Shaders\BumpedSpecularDisplacement.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\TessellationShaders\Shaders\BumpedSpecularSmooth.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ToonShading\Shaders\ToonBasic.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ToonShading\Shaders\ToonBasicOutline.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ToonShading\Shaders\ToonLit.shader" />
+    <None Include="Assets\Unity\Standard Assets\Effects\ToonShading\Shaders\ToonLitOutline.shader" />
+    <None Include="Assets\Unity\Standard Assets\Environment\Water (Basic)\Shaders\FXWaterBasic.shader" />
+    <None Include="Assets\Unity\Standard Assets\Environment\Water\Water\Shaders\FXWaterPro.shader" />
+    <None Include="Assets\Unity\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Advanced.shader" />
+    <None Include="Assets\Unity\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Simple.shader" />
+    <None Include="Assets\Unity\Standard Assets\Environment\Water\Water4\Shaders\WaterInclude.cginc" />
+    <None Include="Assets\Unity\Standard Assets\Fonts\OpenSans\License!.txt" />
+    <None Include="Assets\Unity\Standard Assets\ParticleSystems\ParticleSystemsGuidelines.txt" />
+    <None Include="Assets\Unity\Standard Assets\ParticleSystems\Shaders\PriorityParticleAdd.shader" />
+    <None Include="Assets\Unity\Standard Assets\ParticleSystems\Shaders\PriorityParticleAddSoft.shader" />
+    <None Include="Assets\Unity\Standard Assets\ParticleSystems\Shaders\PriorityParticleAlpha.shader" />
+    <None Include="Assets\Unity\Standard Assets\Prototyping\Shaders\WorldCoordDiffuse.shader" />
+    <None Include="Assets\Unity\Standard Assets\Vehicles\Aircraft\AircraftGuidelines.txt" />
+    <None Include="Assets\Unity\Standard Assets\Vehicles\Car\CarGuidelines.txt" />
+    <None Include="Assets\Unity\Standard Assets\Vehicles\Car\Shaders\DiffuseReflectiveShader.shader" />
+    <None Include="Assets\Unity\Standard Assets\Vehicles\Car\Shaders\ReflectiveDiffuseSpec.shader" />
+    <None Include="Assets\Unity\Standard Assets\Vehicles\Car\Shaders\ReflectiveDiffuseSpecTransp.shader" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="GenerateTargetFrameworkMonikerAttribute" />
+</Project>
