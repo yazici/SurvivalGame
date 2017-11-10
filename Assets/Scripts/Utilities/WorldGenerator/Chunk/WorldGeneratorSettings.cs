@@ -33,6 +33,18 @@ namespace Pamux.Lib.WorldGen
         
         public AnimationCurve TemperatureCurve;
         public AnimationCurve MoistureCurve;
+        public AnimationCurve PrecipitationCurve;
+        public AnimationCurve LandmassCurve;
+        public AnimationCurve CrimeCurve;
+        public AnimationCurve RockDensityCurve;
+        public AnimationCurve GoldDensityCurve;
+        public AnimationCurve IronDensityCurve;
+        public AnimationCurve OceanSalinityCurve;
+        public AnimationCurve WindSpeedCurve;
+        public AnimationCurve RiverDensityCurve;
+        public AnimationCurve LakeDensityCurve;
+        public AnimationCurve MicroClimateProbabilityCurve;
+
 
         public int Seed { get; private set; }
 
