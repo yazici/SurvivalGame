@@ -45,7 +45,6 @@ namespace Pamux.Lib.WorldGen
         public AnimationCurve LakeDensityCurve;
         public AnimationCurve MicroClimateProbabilityCurve;
 
-
         public int Seed { get; private set; }
 
         public BiomeData[] Biomes;
