@@ -2,22 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Pamux.Lib.LevelData.Generator;
+using Pamux.Lib.WorldGen;
 using UnityEngine;
 
 namespace Assets.Scripts.GameObjects
 {
     public class GameObjectFactory
     {
-        public static LevelDataGeneratorSettings S { get { return LevelDataGeneratorSettings.Instance; } }
-        public static LevelDataGenerator G { get { return LevelDataGenerator.Instance; } }
+        public static WorldGeneratorSettings S { get { return WorldGeneratorSettings.Instance; } }
+        public static WorldGenerator G { get { return WorldGenerator.Instance; } }
 
-        private LevelDataChunkContent levelDataChunkContent;
-        public LevelDataMaps LevelDataMaps { get { return levelDataChunkContent.LevelDataMaps; } }
+        private WorldDataChunkContent WorldDataChunkContent;
+        public WorldDataMaps DataMaps { get { return WorldDataChunkContent.DataMaps; } }
 
-        public GameObjectFactory(LevelDataChunkContent levelDataChunkContent)
+        public GameObjectFactory(WorldDataChunkContent WorldDataChunkContent)
         {
-            this.levelDataChunkContent = levelDataChunkContent;
+            this.WorldDataChunkContent = WorldDataChunkContent;
         }
 
         public GameObject Create(GameObjectTypes type)
@@ -47,7 +47,7 @@ namespace Assets.Scripts.GameObjects
         
             if (o != null)
             { 
-                levelDataChunkContent.GameObjects.Add(o);
+                WorldDataChunkContent.GameObjects.Add(o);
             }
             return o;
         }
@@ -72,7 +72,7 @@ namespace Assets.Scripts.GameObjects
             {
                 o.transform.localScale = scale;
                 o.transform.position = position;
-                levelDataChunkContent.GameObjects.Add(o);
+                WorldDataChunkContent.GameObjects.Add(o);
             }
 
             return o;

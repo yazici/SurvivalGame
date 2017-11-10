@@ -3,33 +3,46 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Taggable : MonoBehaviour
+namespace Assets.Scripts.GameObjects
 {
-    public string[] Tags;
-
-    internal void EnsureTag(string tag)
+    public class Taggable : MonoBehaviour
     {
-        if (Tags == null)
+        public bool ShouldUse => !DontUseAsTagged && Opinion != "no";
+        public bool DontUseAsTagged = false;
+        public string Opinion;
+        public string PrefabAssetPath; 
+
+        [SerializeField]
+        public WeightedTag[] WeightedTags;
+        
+        internal void EnsureTag(string tagStr)
         {
-            Tags = new string[] { tag };
-            return;
+            var weightedTag = new WeightedTag { Tag = tagStr, Weight = 1.0f };
+
+            if (WeightedTags == null)
+            {
+                WeightedTags = new WeightedTag[] { weightedTag };
+                return;
+            }
+
+            if (HasTag(tagStr))
+            {
+                return;
+            }
+
+            var newTags = new List<WeightedTag>();
+            newTags.AddRange(WeightedTags);
+            newTags.Add(weightedTag);
+            WeightedTags = newTags.ToArray();
         }
 
-        if (HasTag(tag))
+        internal void TagFromPath(string path)
         {
-            return;
-        }
-
-        var newTags = new List<string>();
-        newTags.AddRange(Tags);
-        newTags.Add(tag);
-        Tags = newTags.ToArray();
-    }
-
-    internal void TagFromPath(string path)
-    {
-        string[] tags = {
+            string[] tags = {
             "tree",
+            "log",
+            "plank",
+            "stump",
             "rock",
             "red",
             "green",
@@ -115,41 +128,42 @@ public class Taggable : MonoBehaviour
             "cloud",
             "terrain"};
 
-        foreach (var tag in tags)
-        {
-            if (path.Contains(tag))
+            foreach (var tag in tags)
             {
-                EnsureTag(tag);
+                if (path.Contains(tag))
+                {
+                    EnsureTag(tag);
+                }
+            }
+
+            if (WeightedTags.Length < 2)
+            {
+                Debug.Log(path);
             }
         }
 
-        if (Tags.Length < 2)
+        internal bool HasAnyTag(string[] tags)
         {
-            Debug.Log(path);
-        }
-    }
-
-    internal bool HasAnyTag(string[] tags)
-    {
-        foreach (var tag in tags)
-        {
-            if (HasTag(tag))
+            foreach (var tag in tags)
             {
-                return true;
+                if (HasTag(tag))
+                {
+                    return true;
+                }
             }
+            return false;
         }
-        return false;
-    }
 
-    public bool HasTag(string tag)
-    {
-        foreach (var aTag in Tags)
+        public bool HasTag(string tag)
         {
-            if (aTag.Equals(tag, StringComparison.InvariantCultureIgnoreCase))
+            foreach (var aTag in WeightedTags)
             {
-                return true;
+                if (aTag.Tag != null && aTag.Tag.Equals(tag, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    return true;
+                }
             }
+            return false;
         }
-        return false;
     }
 }

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using Pamux.Lib.Managers;
 
 namespace Pamux.Utilities
 {
@@ -12,10 +13,10 @@ namespace Pamux.Utilities
 	{
 		private static T instance;
 
-		/// <summary>
-		/// The static reference to the instance
-		/// </summary>
-		public static T Instance
+        /// <summary>
+        /// The static reference to the instance
+        /// </summary>
+        public static T Instance
 		{
 			get
 			{
