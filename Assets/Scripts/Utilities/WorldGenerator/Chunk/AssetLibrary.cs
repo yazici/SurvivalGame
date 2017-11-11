@@ -124,19 +124,19 @@ namespace Pamux.Lib.WorldGen
         //    }
         //}
 
-        [ContextMenu("Save User Decisions")]
-        private void SaveUserDecisions()
-        {           
-            var path = Application.persistentDataPath + "/assetYesNo.json";
-            Debug.Log(path);
+        //[ContextMenu("Save User Decisions")]
+        //private void SaveUserDecisions()
+        //{           
+        //    var path = Application.persistentDataPath + "/assetYesNo.json";
+        //    Debug.Log(path);
 
-            var serializer = new DataContractJsonSerializer(typeof(AssetOpinions));
+        //    var serializer = new DataContractJsonSerializer(typeof(AssetOpinions));
 
-            using (var file = File.CreateText(path))
-            {
-                file.Write(AssetOpinions.ToJSON<AssetOpinions>());
-            }
-        }
+        //    using (var file = File.CreateText(path))
+        //    {
+        //        file.Write(AssetOpinions.ToJSON<AssetOpinions>());
+        //    }
+        //}
 
         
 

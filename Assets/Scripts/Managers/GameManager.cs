@@ -4,16 +4,17 @@ using UnityEngine;
 using AClockworkBerry;
 using Pamux.Utilities;
 using Pamux.Lib.WorldGen;
-
+using Pamux.Lib.Utilities;
 namespace Pamux.Lib.Managers
 {
-
     public class GameManager : Singleton<GameManager>
     {
         public WorldGenerator WorldGenerator;
         public WorldGeneratorSettings WorldGeneratorSettings;
 
         public ScreenLogger ScreenLogger;
+
+        public PamuxNativePlugin PamuxNativePlugin;
 
         public AssetManager AssetManager;
         public AudioManager AudioManager;

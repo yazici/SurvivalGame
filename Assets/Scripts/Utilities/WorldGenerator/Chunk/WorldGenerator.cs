@@ -12,7 +12,7 @@ namespace Pamux.Lib.WorldGen
     {
         public System.Random Random { get; private set; }
 
-        private const int Radius = 4;
+        private const int Radius = 2;
 
         private string previousPlayerPositionChunkKey;
 
@@ -22,27 +22,11 @@ namespace Pamux.Lib.WorldGen
 
         public INoiseMaker NoiseMaker;
 
-        void Awake()
-        {
-            if (Instance != null)
-            {
-                throw new Exception("WorldGenerator must be singleton");
-            }
-
-            Instance = this;
-
-            if (Settings == null)
-            {
-                throw new Exception("Settings can't be null");
-            }
-
-            NoiseMaker = new NoiseMaker(Settings.Seed);
-
-            Random = new System.Random(Settings.Seed);
-        }
-
         void Start()
         {
+            NoiseMaker = new NoiseMaker(Settings.Seed);
+            Random = new System.Random(Settings.Seed);
+
             ChunkCache.Update(Player.position, Radius);
             StartCoroutine(InitializeCoroutine());
         }

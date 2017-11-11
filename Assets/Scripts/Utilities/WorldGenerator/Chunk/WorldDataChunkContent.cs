@@ -101,7 +101,7 @@ namespace Pamux.Lib.WorldGen
                 heightmapResolution = S.HeightMapResolution,
                 alphamapResolution = S.AlphaMapResolution
             };
-            TerrainData.SetHeights(0, 0, DataMaps.HeightMap);
+            TerrainData.SetHeights(0, 0, DataMaps.HeightMap.Map);
             ApplyTextures();
 
             TerrainData.size = new Vector3(S.Length, S.Height, S.Length);
@@ -116,6 +116,8 @@ namespace Pamux.Lib.WorldGen
             Terrain.reflectionProbeUsage = UnityEngine.Rendering.ReflectionProbeUsage.Off;
             Terrain.Flush();
         }
+
+        
 
         private void ApplyTextures()
         {
@@ -134,26 +136,28 @@ namespace Pamux.Lib.WorldGen
 
                     if (steepnessNormalized > 0.5)
                     {
-                        splatMap[zRes, xRes, 0] = 0.0f;
-                        splatMap[zRes, xRes, 1] = 1.0f;
+                        splatMap[xRes, zRes, 0] = 0.0f;
+                        splatMap[xRes, zRes, 1] = 1.0f;
 
                     }
                     else
                     {
-                        splatMap[zRes, xRes, 0] = 1.0f;
-                        splatMap[zRes, xRes, 1] = 0.0f;
+                        splatMap[xRes, zRes, 0] = 1.0f;
+                        splatMap[xRes, zRes, 1] = 0.0f;
 
                     }
-                    //splatMap[zRes, xRes, 0] = 1f - steepnessNormalized;
-                    //splatMap[zRes, xRes, 1] = steepnessNormalized;
+                    //splatMap[xRes, zRes, 0] = 1f - steepnessNormalized;
+                    //splatMap[xRes, zRes, 1] = steepnessNormalized;
                     */
 
                     for (int i = 0; i < S.Biomes.Count(); ++i)
                     { 
-                        DataMaps.SplatMap[zRes, xRes, i] = 0.0f;
+                        DataMaps.SplatMap[xRes, zRes, i] = 0.0f;
                     }
 
-                    DataMaps.SplatMap[zRes, xRes, DataMaps.BiomeMap[zRes, xRes]] = 1.0f;
+                    var biomeId = DataMaps.GetBiomeId(xRes, zRes);
+
+                    DataMaps.SplatMap[xRes, zRes, biomeId] = 1.0f;
                 }
             }
 

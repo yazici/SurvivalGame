@@ -6,13 +6,16 @@ using Pamux.Utilities;
 
 namespace Pamux.Lib.WorldGen
 {
+
     public class WorldGeneratorSettings : Singleton<WorldGeneratorSettings>
     {
+
         public float Oceans = 0.75f;
         public float Land = 0.24f;
         public float Lakes = 0.02f;
         public float Rivers = 0.01f;
-        
+
+        public WorldSizes WorldSize;
 
         public int HeightMapResolution = 129;
 
