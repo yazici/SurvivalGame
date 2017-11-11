@@ -1,9 +1,7 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System;
-using Pamux.Lib.Managers;
 
-namespace Pamux.Utilities
+namespace Pamux.Lib.Utilities
 {
 	/// <summary>
 	/// Singleton class

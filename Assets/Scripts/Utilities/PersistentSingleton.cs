@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace Pamux.Utilities
+namespace Pamux.Lib.Utilities
 {
 	/// <summary>
 	/// Singleton that persists across multiple scenes

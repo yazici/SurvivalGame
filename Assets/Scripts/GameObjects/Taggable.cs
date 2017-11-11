@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Scripts.GameObjects
+namespace Pamux.Lib.GameObjects
 {
     public class Taggable : MonoBehaviour
     {

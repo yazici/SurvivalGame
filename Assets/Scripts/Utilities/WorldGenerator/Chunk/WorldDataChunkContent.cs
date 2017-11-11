@@ -1,11 +1,7 @@
-﻿using Assets.Scripts.GameObjects;
-using Assets.Scripts.Generator;
+﻿using Pamux.Lib.GameObjects;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Runtime.Serialization.Json;
-using System.Text;
 using UnityEngine;
 
 namespace Pamux.Lib.WorldGen

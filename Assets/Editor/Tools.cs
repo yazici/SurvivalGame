@@ -1,16 +1,12 @@
 ﻿using UnityEngine;
 using UnityEditor;
-using System.Collections;
 using System;
 using System.Text;
 using System.IO;
-using Assets.Scripts.Generator;
-using System.Runtime.Serialization.Json;
-using Assets.Scripts.Utilities;
-using Assets.Scripts.GameObjects;
+using Pamux.Lib.GameObjects;
 using Pamux.Lib.WorldGen;
 
-namespace Pamux.Editors
+namespace Pamux.Lib.Editors
 {
     [CustomEditor(typeof(AssetLibrary)), CanEditMultipleObjects]
     public class AssetLibraryEditor : Editor

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Assets.Scripts.GameObjects
+namespace Pamux.Lib.GameObjects
 {
     [Serializable]
     public class WeightedTag

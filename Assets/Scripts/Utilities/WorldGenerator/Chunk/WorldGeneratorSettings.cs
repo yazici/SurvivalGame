@@ -1,15 +1,12 @@
-﻿using Pamux.GameModel;
-using System;
-using System.Collections.Generic;
-using UnityEngine;
-using Pamux.Utilities;
+﻿using UnityEngine;
+using Pamux.Lib.Utilities;
+using Pamux.Lib.Enums;
+using Pamux.Lib.Extensions;
 
 namespace Pamux.Lib.WorldGen
 {
-
     public class WorldGeneratorSettings : Singleton<WorldGeneratorSettings>
     {
-
         public float Oceans = 0.75f;
         public float Land = 0.24f;
         public float Lakes = 0.02f;
@@ -51,10 +48,31 @@ namespace Pamux.Lib.WorldGen
         public int Seed { get; private set; }
 
         public BiomeData[] Biomes;
+
         public Material TerrainMaterial;
 
         public float DefaultGameObjectElevation = 1.0f;
 		public float DefaultCloudElevation = 100.0f;
+
+        protected override void Awake()
+        {
+            base.Awake();
+
+            if (Biomes == null)
+            { 
+                Biomes = new BiomeData[]
+                {
+                    new BiomeData("Ice"),
+                    new BiomeData("Grass"),
+                    new BiomeData("Desert"),
+                };
+            }
+
+            if (TerrainMaterial == null)
+            { 
+                TerrainMaterial = "Ground".LoadResource<Material>(PamuxResourceTypes.BiomeGroundMaterial);
+            }
+        }
 
         public Vector3 GetVector3AtDefaultElevation(int x, int z)
         {

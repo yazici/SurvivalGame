@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Pamux.Utilities
+namespace Pamux.Lib.Utilities
 {
 	/// <summary>
 	/// A collection of game objects we should disable on mobile platforms

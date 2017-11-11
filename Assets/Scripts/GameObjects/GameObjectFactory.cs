@@ -5,7 +5,7 @@ using System.Text;
 using Pamux.Lib.WorldGen;
 using UnityEngine;
 
-namespace Assets.Scripts.GameObjects
+namespace Pamux.Lib.GameObjects
 {
     public class GameObjectFactory
     {

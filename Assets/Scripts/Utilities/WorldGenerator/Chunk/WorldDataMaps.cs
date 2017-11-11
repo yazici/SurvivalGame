@@ -7,12 +7,7 @@ using UnityEngine;
 namespace Pamux.Lib.WorldGen
 {
 
-    [Serializable]
-    public class BiomeData
-    {
-        public string Name;
-        public Texture2D texture;
-    }
+    
 
     public class WorldDataMaps
     {
@@ -41,7 +36,7 @@ namespace Pamux.Lib.WorldGen
             {
                 SplatPrototypes[i] = new SplatPrototype
                 {
-                    texture = S.Biomes[i].texture
+                    texture = S.Biomes[i].Texture
                 };
             }
         }

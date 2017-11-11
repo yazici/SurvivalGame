@@ -349,6 +349,7 @@
     <Compile Include="Assets\3rdParty\PostProcessing\Editor\Utils\FxStyles.cs" />
     <Compile Include="Assets\3rdParty\PostProcessing\Editor\Utils\ReflectionUtils.cs" />
     <Compile Include="Assets\3rdParty\Standard Assets\Editor\CrossPlatformInput\CrossPlatformInputInitialize.cs" />
+    <Compile Include="Assets\Editor\PamuxSceneTools.cs" />
     <Compile Include="Assets\Editor\ScreenLoggerEditor.cs" />
     <Compile Include="Assets\Editor\Tools.cs" />
   </ItemGroup>

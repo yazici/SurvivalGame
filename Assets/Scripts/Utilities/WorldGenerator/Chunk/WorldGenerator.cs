@@ -3,11 +3,12 @@ using Pamux.Lib.WorldGen;
 using UnityEngine;
 using UnityStandardAssets.Utility;
 using System;
-using Pamux.Utilities;
+using Pamux.Lib.Utilities;
 using Pamux.Lib.Managers;
 
 namespace Pamux.Lib.WorldGen
 {
+    [RequireComponent(typeof(WorldGeneratorSettings))]
     public class WorldGenerator : Singleton<WorldGenerator>
     {
         public System.Random Random { get; private set; }
@@ -16,7 +17,7 @@ namespace Pamux.Lib.WorldGen
 
         private string previousPlayerPositionChunkKey;
 
-        protected Transform Player => PlayerManager.Instance.LocalPlayer.transform;
+        protected Transform Player => PlayerManager.LocalPlayer.transform;
 
         public WorldGeneratorSettings Settings;
 

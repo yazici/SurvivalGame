@@ -4,7 +4,7 @@ using UnityEngine;
 using Windows.System.Profile;
 #endif
 
-namespace Pamux.Utilities
+namespace Pamux.Lib.Utilities
 {
 	public static class MobileUtilities
 	{

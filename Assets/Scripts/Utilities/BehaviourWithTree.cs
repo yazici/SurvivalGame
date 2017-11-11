@@ -2,98 +2,100 @@
 using System.Collections.Generic;
 using System;
 
-
-public class BehaviourWithTree : MonoBehaviour, ISerializationCallbackReceiver
+namespace Pamux.Lib.Utilities
 {
-    [SerializeField]
-    public CustomDictionary dic;
-    //node class that is used at runtime
-    public class Node
+    public class BehaviourWithTree : MonoBehaviour, ISerializationCallbackReceiver
     {
-        public string interestingValue = "value";
-        public List<Node> children = new List<Node>();
-    }
-
-    [Serializable]
-    public struct SerializableNode
-    {
-        public string interestingValue;
-        public int childCount;
-        public int indexOfFirstChild;
-    }
-
-    Node root = new Node();
-
-    public List<SerializableNode> serializedNodes;
-
-    public void OnBeforeSerialize()
-    {
-        //unity is about to read the serializedNodes field's contents. lets make sure
-        //we write out the correct data into that field "just in time".
-        serializedNodes.Clear();
-        AddNodeToSerializedNodes(root);
-    }
-
-    void AddNodeToSerializedNodes(Node n)
-    {
-        var serializedNode = new SerializableNode()
+        [SerializeField]
+        public CustomDictionary dic;
+        //node class that is used at runtime
+        public class Node
         {
-            interestingValue = n.interestingValue,
-            childCount = n.children.Count,
-            indexOfFirstChild = serializedNodes.Count + 1
-        };
+            public string interestingValue = "value";
+            public List<Node> children = new List<Node>();
+        }
 
-        serializedNodes.Add(serializedNode);
-        foreach (var child in n.children)
-            AddNodeToSerializedNodes(child);
-    }
-
-    public void OnAfterDeserialize()
-    {
-        //Unity has just written new data into the serializedNodes field.
-        //let's populate our actual runtime data with those new values.
-
-        if (serializedNodes.Count > 0)
-            root = ReadNodeFromSerializedNodes(0);
-        else
-            root = new Node();
-    }
-
-    Node ReadNodeFromSerializedNodes(int index)
-    {
-        var serializedNode = serializedNodes[index];
-        var children = new List<Node>();
-        for (int i = 0; i != serializedNode.childCount; i++)
-            children.Add(ReadNodeFromSerializedNodes(serializedNode.indexOfFirstChild + i));
-
-        return new Node()
+        [Serializable]
+        public struct SerializableNode
         {
-            interestingValue = serializedNode.interestingValue,
-            children = children
-        };
-    }
+            public string interestingValue;
+            public int childCount;
+            public int indexOfFirstChild;
+        }
 
-    void OnGUI()
-    {
-        Display(root);
-    }
+        Node root = new Node();
 
-    void Display(Node node)
-    {
-        GUILayout.Label("Value: ");
-        node.interestingValue = GUILayout.TextField(node.interestingValue, GUILayout.Width(200));
+        public List<SerializableNode> serializedNodes;
 
-        GUILayout.BeginHorizontal();
-        GUILayout.Space(20);
-        GUILayout.BeginVertical();
+        public void OnBeforeSerialize()
+        {
+            //unity is about to read the serializedNodes field's contents. lets make sure
+            //we write out the correct data into that field "just in time".
+            serializedNodes.Clear();
+            AddNodeToSerializedNodes(root);
+        }
 
-        foreach (var child in node.children)
-            Display(child);
+        void AddNodeToSerializedNodes(Node n)
+        {
+            var serializedNode = new SerializableNode()
+            {
+                interestingValue = n.interestingValue,
+                childCount = n.children.Count,
+                indexOfFirstChild = serializedNodes.Count + 1
+            };
 
-        if (GUILayout.Button("Add child"))
-            node.children.Add(new Node());
+            serializedNodes.Add(serializedNode);
+            foreach (var child in n.children)
+                AddNodeToSerializedNodes(child);
+        }
 
-        GUILayout.EndVertical();
-        GUILayout.EndHorizontal();
+        public void OnAfterDeserialize()
+        {
+            //Unity has just written new data into the serializedNodes field.
+            //let's populate our actual runtime data with those new values.
+
+            if (serializedNodes.Count > 0)
+                root = ReadNodeFromSerializedNodes(0);
+            else
+                root = new Node();
+        }
+
+        Node ReadNodeFromSerializedNodes(int index)
+        {
+            var serializedNode = serializedNodes[index];
+            var children = new List<Node>();
+            for (int i = 0; i != serializedNode.childCount; i++)
+                children.Add(ReadNodeFromSerializedNodes(serializedNode.indexOfFirstChild + i));
+
+            return new Node()
+            {
+                interestingValue = serializedNode.interestingValue,
+                children = children
+            };
+        }
+
+        void OnGUI()
+        {
+            Display(root);
+        }
+
+        void Display(Node node)
+        {
+            GUILayout.Label("Value: ");
+            node.interestingValue = GUILayout.TextField(node.interestingValue, GUILayout.Width(200));
+
+            GUILayout.BeginHorizontal();
+            GUILayout.Space(20);
+            GUILayout.BeginVertical();
+
+            foreach (var child in node.children)
+                Display(child);
+
+            if (GUILayout.Button("Add child"))
+                node.children.Add(new Node());
+
+            GUILayout.EndVertical();
+            GUILayout.EndHorizontal();
+        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Pamux.Utilities
+namespace Pamux.Lib.Utilities
 {
 	//Math utilities
 	public static class MathUtilities

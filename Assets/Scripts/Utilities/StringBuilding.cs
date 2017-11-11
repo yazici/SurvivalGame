@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace Pamux.Utilities
+namespace Pamux.Lib.Utilities
 {
     public static class StringBuilding
     {
