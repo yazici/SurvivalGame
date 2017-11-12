@@ -3,7 +3,7 @@ using Pamux.Lib.Utilities;
 
 namespace Pamux.Lib.Managers
 {
-    [RequireComponent(typeof(ConfigurationManager))]
+    //[RequireComponent(typeof(ConfigurationManager))]
 
     public class GameManager : Singleton<GameManager>
     {

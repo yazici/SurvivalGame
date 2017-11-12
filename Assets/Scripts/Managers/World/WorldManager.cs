@@ -6,8 +6,8 @@ using System;
 namespace Pamux.Lib.Managers
 {
     [RequireComponent(typeof(WorldGenerator))]
-    [RequireComponent(typeof(TimeManager))]
-    [RequireComponent(typeof(WeatherManager))]
+    //[RequireComponent(typeof(TimeManager))]
+    //[RequireComponent(typeof(WeatherManager))]
 
     // [RequireComponent(typeof(TerrainManager))]
     // [RequireComponent(typeof(TerrainObjectsManager))]    

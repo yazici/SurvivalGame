@@ -48,11 +48,18 @@ namespace Pamux.Lib.Extensions
 
             if (monoBehaviour != null)
             {
-                go.transform.parent = monoBehaviour.transform;
+                go.transform.SetParent(monoBehaviour.transform);
             }
             return component;
         }
 
+        public static Transform InstantiatePrefabAsChild(this Transform transform, string path)
+        {
+            var res = Resources.Load(path);
+            var go = GameObject.Instantiate(res) as GameObject;
+            go.transform.SetParent(transform);
+            return go.transform;
+        }
 
         public static void DisableComponentInChildren<T>(this MonoBehaviour monoBehaviour)
             where T : MonoBehaviour

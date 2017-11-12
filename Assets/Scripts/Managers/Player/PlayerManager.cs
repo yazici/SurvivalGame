@@ -66,11 +66,13 @@ namespace Pamux.Lib.Managers
 
             var res = Resources.Load("Prefabs/FirstPersonController") as GameObject;
             var go = Instantiate(res);
+            go.SetActive(false);
             go.transform.parent = this.transform;
             firstPersonPlayer = go.AddComponent<Player>();
 
             res = Resources.Load("Prefabs/ThirdPersonController") as GameObject;
             go = Instantiate(res);
+            go.SetActive(false);
             go.transform.parent = this.transform;
             thirdPersonPlayer = go.AddComponent<Player>();
 

@@ -29,7 +29,7 @@ namespace Pamux.Lib.Utilities
             var res = Resources.Load("Prefabs/ui/ShowMouseClick") as GameObject;
             var go = Instantiate(res);
             ShowMouseClick = go.transform;
-            ShowMouseClick.parent = this.transform;
+            ShowMouseClick.SetParent(transform);
         }
 
         private GameObject GetHitGameObject()

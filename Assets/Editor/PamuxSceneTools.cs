@@ -69,21 +69,35 @@ namespace Pamux.Lib.Editors
         static public void SetupManagers()
         {
             MonoBehaviour root = null;
+
             var gameManager = root.EnsureChildWithComponent<GameManager>();
-            gameManager.EnsureChildWithComponent<WorldManager>();
+            var configurationManager = gameManager.EnsureChildWithComponent<ConfigurationManager>();
+
+            var worldManager = gameManager.EnsureChildWithComponent<WorldManager>();
+            var timeManager = worldManager.EnsureChildWithComponent<TimeManager>();
+            var weatherManager = worldManager.EnsureChildWithComponent<WeatherManager>();
+
             var utilitiesManager = gameManager.EnsureChildWithComponent<UtilitiesManager>();
 
             var uiManager = utilitiesManager.EnsureChildWithComponent<UiManager>();
 
-            var uiCanvas = uiManager.InstantiatePrefabAsChild("Prefabs/ui/ScreenSpaceCanvas");
-            uiCanvas = uiManager.InstantiatePrefabAsChild("Prefabs/ui/WorldSpaceCanvas");
+            var transform = uiManager.transform.InstantiatePrefabAsChild("Prefabs/ui/ScreenSpaceCanvas");
+            var rectTransform = transform.InstantiatePrefabAsChild("Prefabs/ui/DebugUiPanel") as RectTransform;
+            rectTransform.offsetMax = Vector2.one;
+            rectTransform.offsetMin = Vector2.zero;
 
-            gameManager.EnsureChildWithComponent<ArtsManager>();
-            gameManager.EnsureChildWithComponent<MonetizationManager>();
+            transform = uiManager.transform.InstantiatePrefabAsChild("Prefabs/ui/WorldSpaceCanvas");
+            transform.InstantiatePrefabAsChild("Prefabs/ui/ShowMouseClick");
+
+            var artsManager = gameManager.EnsureChildWithComponent<ArtsManager>();
+            var cinematographyManager = artsManager.EnsureChildWithComponent<CinematographyManager>();
+            var photographyManager = artsManager.EnsureChildWithComponent<PhotographyManager>();
 
 
+            var monetizationManager = gameManager.EnsureChildWithComponent<MonetizationManager>();
 
-            gameManager.EnsureChildWithComponent<PlayerManager>();
+
+            var playerManager = gameManager.EnsureChildWithComponent<PlayerManager>();
         }
     }
 }

@@ -12,11 +12,7 @@ namespace Pamux.Lib.Managers
         protected override void Awake()
         {
             base.Awake();
-#if UNITY_EDITOR
-            ScreenLogger.Instance.ShowLog = true;
-#else
             ScreenLogger.Instance.ShowLog = false;
-#endif
         }
 
     }
