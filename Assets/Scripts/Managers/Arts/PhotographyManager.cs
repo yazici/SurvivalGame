@@ -8,18 +8,16 @@ namespace Pamux.Lib.Managers
     [RequireComponent(typeof(Light))]
     public class PhotographyManager : Singleton<PhotographyManager>
     {
-        private Light light;
-
-        
-       
         protected override void Awake()
         {
             base.Awake();
 
-            light = GetComponent<Light>();
+            var light = GetComponent<Light>();
 
             light.type = LightType.Directional;
             light.color = "FFD48FFF".ToColor();
+            light.intensity = 1.5f;
+            light.transform.rotation = Quaternion.Euler(45f, 0, 45f);
         }
     }
 }

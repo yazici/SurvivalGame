@@ -79,15 +79,7 @@ namespace Pamux.Lib.Editors
 
             var utilitiesManager = gameManager.EnsureChildWithComponent<UtilitiesManager>();
 
-            var uiManager = utilitiesManager.EnsureChildWithComponent<UiManager>();
-
-            var transform = uiManager.transform.InstantiatePrefabAsChild("Prefabs/ui/ScreenSpaceCanvas");
-            var rectTransform = transform.InstantiatePrefabAsChild("Prefabs/ui/DebugUiPanel") as RectTransform;
-            rectTransform.offsetMax = Vector2.one;
-            rectTransform.offsetMin = Vector2.zero;
-
-            transform = uiManager.transform.InstantiatePrefabAsChild("Prefabs/ui/WorldSpaceCanvas");
-            transform.InstantiatePrefabAsChild("Prefabs/ui/ShowMouseClick");
+            var uiManager = gameManager.EnsureChildWithComponent<UiManager>();
 
             var artsManager = gameManager.EnsureChildWithComponent<ArtsManager>();
             var cinematographyManager = artsManager.EnsureChildWithComponent<CinematographyManager>();

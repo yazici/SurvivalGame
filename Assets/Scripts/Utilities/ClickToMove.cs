@@ -1,4 +1,5 @@
 ﻿using Pamux.Lib.GameObjects;
+using Pamux.Lib.Managers;
 using Pamux.Lib.WorldGen;
 using System;
 using System.Collections;
@@ -17,7 +18,6 @@ namespace Pamux.Lib.Utilities
         private Vector3? targetPosition;
 
         private ThirdPersonCharacter thirdPersonCharacter;
-        private Transform ShowMouseClick;
 
         public Image image;
         private float originalDistance;
@@ -25,11 +25,6 @@ namespace Pamux.Lib.Utilities
         void Awake()
         {
             thirdPersonCharacter = GetComponent<ThirdPersonCharacter>();
-
-            var res = Resources.Load("Prefabs/ui/ShowMouseClick") as GameObject;
-            var go = Instantiate(res);
-            ShowMouseClick = go.transform;
-            ShowMouseClick.SetParent(transform);
         }
 
         private GameObject GetHitGameObject()
@@ -127,7 +122,7 @@ namespace Pamux.Lib.Utilities
         {
             targetPosition = pos;
 
-            ShowMouseClick.position = new Vector3(targetPosition.Value.x, 0.1f, targetPosition.Value.z);
+            UiManager.Instance.ShowMouseClick.position = new Vector3(targetPosition.Value.x, targetPosition.Value.y + 0.1f, targetPosition.Value.z);
             originalDistance = (targetPosition.Value - transform.position).magnitude;
         }
     }
