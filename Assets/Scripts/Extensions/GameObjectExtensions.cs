@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Pamux.Lib.Extensions
@@ -26,5 +27,51 @@ namespace Pamux.Lib.Extensions
 				}
 			}
 		}
-	}
+
+
+        public static T EnsureChildWithComponent<T>(this MonoBehaviour monoBehaviour)
+            where T : MonoBehaviour
+        {
+            T component;
+            if (monoBehaviour != null)
+            {
+                component = monoBehaviour.GetComponentInChildren<T>();
+                if (component != null)
+                {
+                    return component;
+                }
+            }
+
+            var go = new GameObject();
+            go.name = typeof(T).Name;
+            component = go.AddComponent<T>();
+
+            if (monoBehaviour != null)
+            {
+                go.transform.parent = monoBehaviour.transform;
+            }
+            return component;
+        }
+
+
+        public static void DisableComponentInChildren<T>(this MonoBehaviour monoBehaviour)
+            where T : MonoBehaviour
+        {
+            var c = monoBehaviour.GetComponentInChildren<T>();
+            if (c != null)
+            {
+                c.enabled = false;
+            }
+        }
+
+        public static void EnableComponentInChildren<T>(this MonoBehaviour monoBehaviour)
+            where T : MonoBehaviour
+        {
+            var c = monoBehaviour.GetComponentInChildren<T>();
+            if (c != null)
+            {
+                c.enabled = true;
+            }
+        }
+    }
 }

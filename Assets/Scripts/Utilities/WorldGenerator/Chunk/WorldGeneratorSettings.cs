@@ -58,7 +58,7 @@ namespace Pamux.Lib.WorldGen
         {
             base.Awake();
 
-            if (Biomes == null)
+            if (Biomes == null || Biomes.Length == 0)
             { 
                 Biomes = new BiomeData[]
                 {

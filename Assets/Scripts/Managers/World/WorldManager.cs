@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using Pamux.Lib.Utilities;
 using Pamux.Lib.WorldGen;
+using System;
 
 namespace Pamux.Lib.Managers
 {
@@ -15,5 +16,13 @@ namespace Pamux.Lib.Managers
 
     public class WorldManager : Singleton<WorldManager>
     {
+        public bool ChunkIsReady { get; set; }
+
+        protected override void Awake()
+        {
+            base.Awake();
+
+            ChunkIsReady = false;
+        }
     }
 }

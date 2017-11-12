@@ -1,11 +1,9 @@
-﻿using UnityEngine;
-using UnityStandardAssets.Characters.ThirdPerson;
+﻿using Pamux.Lib.Enums;
+using Pamux.Lib.Extensions;
+using UnityEngine;
 
 namespace Pamux.Lib.Utilities
 {
-    [RequireComponent(typeof(ThirdPersonCharacter))]
-    [RequireComponent(typeof(ThirdPersonUserControl))]
-    [RequireComponent(typeof(ClickToMove))]
     public class Player : MonoBehaviour
     {
     }

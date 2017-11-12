@@ -1,11 +1,15 @@
 ﻿using UnityEngine;
 using Pamux.Lib.Utilities;
+using Pamux.Lib.GameObjects;
 
 namespace Pamux.Lib.Managers
 {
 
-    [RequireComponent(typeof(Camera))]
     public class CinematographyManager : Singleton<CinematographyManager>
     {
+        protected override void Awake()
+        {
+            base.Awake();
+        }
     }
 }

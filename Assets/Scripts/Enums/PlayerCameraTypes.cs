@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Pamux.Lib.Enums
 {
-    public enum PamuxResourceTypes
+    public enum PlayerCameraTypes
     {
-        BiomeGroundTexture,
-        BiomeGroundMaterial,
-        CharacterModels
+        FirstPerson,
+        ThirdPerson
     }
 }

@@ -11,12 +11,13 @@ using UnityStandardAssets.Characters.ThirdPerson;
 
 namespace Pamux.Lib.Utilities
 {
+    [RequireComponent(typeof(ThirdPersonCharacter))]
     public class ClickToMove : MonoBehaviour
     {
         private Vector3? targetPosition;
 
         private ThirdPersonCharacter thirdPersonCharacter;
-        public Transform ShowMouseClick;
+        private Transform ShowMouseClick;
 
         public Image image;
         private float originalDistance;
@@ -24,11 +25,16 @@ namespace Pamux.Lib.Utilities
         void Awake()
         {
             thirdPersonCharacter = GetComponent<ThirdPersonCharacter>();
+
+            var res = Resources.Load("Prefabs/ui/ShowMouseClick") as GameObject;
+            var go = Instantiate(res);
+            ShowMouseClick = go.transform;
+            ShowMouseClick.parent = this.transform;
         }
 
-        GameObject GetHitGameObject()
+        private GameObject GetHitGameObject()
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
@@ -81,7 +87,11 @@ namespace Pamux.Lib.Utilities
                     targetPosition = null;
                     a = 0.0f;
                 }
-                image.color = new Color(image.color.r, image.color.g, image.color.b, a);
+
+                if (image != null  && image.color != null)
+                { 
+                    image.color = new Color(image.color.r, image.color.g, image.color.b, a);
+                }
             }
         }
 
@@ -110,7 +120,7 @@ namespace Pamux.Lib.Utilities
                 taggable.Opinion = "yes";
             }
 
-            AssetLibrary.AssetOpinions.Set(taggable);
+            //AssetLibrary.AssetOpinions.Set(taggable);
         }
 
         private void OnLeftButtonDown(Vector3 pos)

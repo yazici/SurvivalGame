@@ -7,7 +7,7 @@ namespace Pamux.Lib.Managers
     [RequireComponent(typeof(CacheManager))]
 
     [RequireComponent(typeof(DatabaseManager))]
-    [RequireComponent(typeof(UiManager))]
+    
     [RequireComponent(typeof(InputManager))]
 
     [RequireComponent(typeof(ObjectPoolManager))]

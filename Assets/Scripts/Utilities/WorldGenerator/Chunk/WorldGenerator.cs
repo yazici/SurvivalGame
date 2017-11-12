@@ -11,24 +11,25 @@ namespace Pamux.Lib.WorldGen
     [RequireComponent(typeof(WorldGeneratorSettings))]
     public class WorldGenerator : Singleton<WorldGenerator>
     {
+        public static WorldGeneratorSettings S { get { return WorldGeneratorSettings.Instance; } }
+        public static WorldGenerator G { get { return WorldGenerator.Instance; } }
+
         public System.Random Random { get; private set; }
 
         private const int Radius = 2;
 
-        private string previousPlayerPositionChunkKey;
+        private string previousPositionChunkKey;
 
-        protected Transform Player => PlayerManager.LocalPlayer.transform;
-
-        public WorldGeneratorSettings Settings;
+        private Vector3 Position => PlayerManager.LocalPlayer == null ? Vector3.zero : PlayerManager.LocalPlayer.transform.position;
 
         public INoiseMaker NoiseMaker;
 
         void Start()
         {
-            NoiseMaker = new NoiseMaker(Settings.Seed);
-            Random = new System.Random(Settings.Seed);
-
-            ChunkCache.Update(Player.position, Radius);
+            NoiseMaker = new NoiseMaker(S.Seed);
+            Random = new System.Random(S.Seed);
+            
+            ChunkCache.Update(Position, Radius);
             StartCoroutine(InitializeCoroutine());
         }
 
@@ -36,11 +37,11 @@ namespace Pamux.Lib.WorldGen
         {
             do
             {
-                var chunkKey = WorldDataChunk.GetKey(Player.position);
+                var chunkKey = WorldDataChunk.GetKey(Position);
                 if (ChunkCache.IsChunkGenerated(chunkKey))
                 {
-                    previousPlayerPositionChunkKey = chunkKey;
-                    ActivatePlayer();
+                    previousPositionChunkKey = chunkKey;
+                    WorldManager.Instance.ChunkIsReady = true;
                     break;
                 }
                 yield return null;
@@ -48,27 +49,14 @@ namespace Pamux.Lib.WorldGen
 
         }
 
-        private void ActivatePlayer()
-        {
-
-            Player.position = new Vector3(Player.position.x, ChunkCache.GetElevation(Player.position) + 0.5f, Player.position.z);
-            Player.gameObject.SetActive(true);
-            Player.GetComponent<Rigidbody>().useGravity = true;
-        }
-
         private void Update()
         {
             ChunkCache.TidyUp();
-            if (!Player.gameObject.activeSelf)
+            var playerChunkPosition = WorldDataChunk.GetKey(Position);
+            if (playerChunkPosition != previousPositionChunkKey)
             {
-                return;
-            }
-
-            var playerChunkPosition = WorldDataChunk.GetKey(Player.position);
-            if (playerChunkPosition != previousPlayerPositionChunkKey)
-            {
-                ChunkCache.Update(Player.position, Radius);
-                previousPlayerPositionChunkKey = playerChunkPosition;
+                ChunkCache.Update(Position, Radius);
+                previousPositionChunkKey = playerChunkPosition;
             }
         }
     }

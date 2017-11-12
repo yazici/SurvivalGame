@@ -241,7 +241,6 @@
     <Compile Include="Assets\3rdParty\Colorful_World\Important, Resoucres\Scripts\BobbingObjectEditor.cs" />
     <Compile Include="Assets\3rdParty\Low Poly Strategy Prototyper\Plugins &amp; Scripts\Scripts\AssetsViewer.cs" />
     <Compile Include="Assets\3rdParty\Low Poly Strategy Prototyper\Plugins &amp; Scripts\Scripts\CameraRotate.cs" />
-    <Compile Include="Assets\3rdParty\Low Poly Strategy Prototyper\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Scripts\Antialiasing.cs" />
     <Compile Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Scripts\Bloom.cs" />
     <Compile Include="Assets\3rdParty\Low Poly Ultimate Pack\Standard Assets\Effects\ImageEffects\Scripts\BloomAndFlares.cs" />
@@ -395,7 +394,6 @@
     <Compile Include="Assets\3rdParty\Standard Assets\Utility\DragRigidbody.cs" />
     <Compile Include="Assets\3rdParty\Standard Assets\Utility\DynamicShadowSettings.cs" />
     <Compile Include="Assets\3rdParty\Standard Assets\Utility\EventSystemChecker.cs" />
-    <Compile Include="Assets\3rdParty\Standard Assets\Utility\FollowTarget.cs" />
     <Compile Include="Assets\3rdParty\Standard Assets\Utility\ForcedReset.cs" />
     <Compile Include="Assets\3rdParty\Standard Assets\Utility\FOVKick.cs" />
     <Compile Include="Assets\3rdParty\Standard Assets\Utility\FPSCounter.cs" />
@@ -405,7 +403,6 @@
     <Compile Include="Assets\3rdParty\Standard Assets\Utility\PlatformSpecificContent.cs" />
     <Compile Include="Assets\3rdParty\Standard Assets\Utility\SimpleActivatorMenu.cs" />
     <Compile Include="Assets\3rdParty\Standard Assets\Utility\SimpleMouseRotator.cs" />
-    <Compile Include="Assets\3rdParty\Standard Assets\Utility\SmoothFollow.cs" />
     <Compile Include="Assets\3rdParty\Standard Assets\Utility\TimedObjectActivator.cs" />
     <Compile Include="Assets\3rdParty\Standard Assets\Utility\TimedObjectDestructor.cs" />
     <Compile Include="Assets\3rdParty\Standard Assets\Utility\WaypointCircuit.cs" />
@@ -414,8 +411,10 @@
     <Compile Include="Assets\Scripts\Enums\GameObjectTypes.cs" />
     <Compile Include="Assets\Scripts\Enums\LogLevels.cs" />
     <Compile Include="Assets\Scripts\Enums\PamuxResourceTypes.cs" />
+    <Compile Include="Assets\Scripts\Enums\PlayerCameraTypes.cs" />
     <Compile Include="Assets\Scripts\Enums\Seasons.cs" />
     <Compile Include="Assets\Scripts\Enums\TimeOfDay.cs" />
+    <Compile Include="Assets\Scripts\Enums\WorldSizes.cs" />
     <Compile Include="Assets\Scripts\Extensions\GameObjectExtensions.cs" />
     <Compile Include="Assets\Scripts\Extensions\IListExtensions.cs" />
     <Compile Include="Assets\Scripts\Extensions\OtherExtensions.cs" />
@@ -426,7 +425,6 @@
     <Compile Include="Assets\Scripts\GameObjects\GameObjectTypes.cs" />
     <Compile Include="Assets\Scripts\GameObjects\Player.cs" />
     <Compile Include="Assets\Scripts\GameObjects\Taggable.cs" />
-    <Compile Include="Assets\Scripts\GameObjects\ThirdPersonCameraMovement.cs" />
     <Compile Include="Assets\Scripts\GameObjects\WeightedTag.cs" />
     <Compile Include="Assets\Scripts\Managers\Arts\ArtsManager.cs" />
     <Compile Include="Assets\Scripts\Managers\Arts\AudioManager.cs" />
@@ -458,11 +456,11 @@
     <Compile Include="Assets\Scripts\Managers\World\TimeManager.cs" />
     <Compile Include="Assets\Scripts\Managers\World\WeatherManager.cs" />
     <Compile Include="Assets\Scripts\Managers\World\WorldManager.cs" />
-    <Compile Include="Assets\Scripts\Utilities\AssetLibrary.cs" />
-    <Compile Include="Assets\Scripts\Utilities\AssetOpinions.cs" />
     <Compile Include="Assets\Scripts\Utilities\BehaviourWithTree.cs" />
+    <Compile Include="Assets\Scripts\Utilities\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Utilities\ClickToMove.cs" />
     <Compile Include="Assets\Scripts\Utilities\Editors\ListInspector.cs" />
+    <Compile Include="Assets\Scripts\Utilities\FollowTarget.cs" />
     <Compile Include="Assets\Scripts\Utilities\LibNoise\Generator\Billow.cs" />
     <Compile Include="Assets\Scripts\Utilities\LibNoise\Generator\Checker.cs" />
     <Compile Include="Assets\Scripts\Utilities\LibNoise\Generator\Const.cs" />
@@ -506,7 +504,11 @@
     <Compile Include="Assets\Scripts\Utilities\PersistentSingleton.cs" />
     <Compile Include="Assets\Scripts\Utilities\ScreenLogger.cs" />
     <Compile Include="Assets\Scripts\Utilities\Singleton.cs" />
+    <Compile Include="Assets\Scripts\Utilities\SmoothFollow.cs" />
     <Compile Include="Assets\Scripts\Utilities\StringBuilding.cs" />
+    <Compile Include="Assets\Scripts\Utilities\UI\UiCanvas.cs" />
+    <Compile Include="Assets\Scripts\Utilities\WorldGenerator\AssetLibrary.cs" />
+    <Compile Include="Assets\Scripts\Utilities\WorldGenerator\AssetOpinions.cs" />
     <Compile Include="Assets\Scripts\Utilities\WorldGenerator\Chunk\BiomeData.cs" />
     <Compile Include="Assets\Scripts\Utilities\WorldGenerator\Chunk\ObjectCreationParameters.cs" />
     <Compile Include="Assets\Scripts\Utilities\WorldGenerator\Chunk\WorldDataChunk.cs" />
@@ -519,7 +521,6 @@
     <Compile Include="Assets\Scripts\Utilities\WorldGenerator\Delegates.cs" />
     <Compile Include="Assets\Scripts\Utilities\WorldGenerator\Noise\INoiseProvider.cs" />
     <Compile Include="Assets\Scripts\Utilities\WorldGenerator\Noise\NoiseProvider.cs" />
-    <Compile Include="Assets\Scripts\Utilities\WorldGenerator\WorldSizes.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\3rdParty\Dog\Description.txt" />

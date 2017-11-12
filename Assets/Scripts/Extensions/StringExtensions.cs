@@ -12,7 +12,8 @@ namespace Pamux.Lib.Extensions
         private static IDictionary<PamuxResourceTypes, string> ResourceTypeToPathPrefix = new Dictionary<PamuxResourceTypes, string>()
         {
             { PamuxResourceTypes.BiomeGroundMaterial, "Materials/Ground" },
-            { PamuxResourceTypes.BiomeGroundTexture, "Textures/Ground" }
+            { PamuxResourceTypes.BiomeGroundTexture, "Textures/Ground" },
+            { PamuxResourceTypes.CharacterModels, "Models/Characters" }
         };
 
         public static T LoadResource<T>(this string resourceName, PamuxResourceTypes resourceType)
