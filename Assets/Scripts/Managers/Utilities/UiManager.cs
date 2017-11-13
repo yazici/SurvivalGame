@@ -6,6 +6,8 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Pamux.Lib.Extensions;
 
+using D  = Pamux.Lib.Utilities.Diagnostics;
+
 namespace Pamux.Lib.Managers
 {
     [RequireComponent(typeof(EventSystem))]
@@ -20,13 +22,13 @@ namespace Pamux.Lib.Managers
 
         public RectTransform MiniMapPanel { get; private set; }
 
-        public RectTransform UiCamera { get; private set; }
+        public Transform UiCamera { get; private set; }
         protected override void Awake()
         {
             base.Awake();
 
-
-            UiCamera = transform.InstantiatePrefabAsChild("Prefabs/ui/UiCamera") as RectTransform;
+            UiCamera = transform.InstantiatePrefabAsChild("Prefabs/ui/UiCamera");
+            
 
             ScreenSpaceCanvas = transform.InstantiatePrefabAsChild("Prefabs/ui/ScreenSpaceCanvas") as RectTransform;
             var canvas = ScreenSpaceCanvas.GetComponent<Canvas>();
