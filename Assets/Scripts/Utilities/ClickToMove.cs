@@ -122,7 +122,7 @@ namespace Pamux.Lib.Utilities
         {
             targetPosition = pos;
 
-            UiManager.Instance.ShowMouseClick.position = new Vector3(targetPosition.Value.x, targetPosition.Value.y + 0.1f, targetPosition.Value.z);
+            UiManager.Instance.CharacterTargetIndicator.position = new Vector3(targetPosition.Value.x, targetPosition.Value.y + 0.1f, targetPosition.Value.z);
             originalDistance = (targetPosition.Value - transform.position).magnitude;
         }
     }

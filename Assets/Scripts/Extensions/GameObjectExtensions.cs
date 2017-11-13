@@ -1,5 +1,10 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+
 
 namespace Pamux.Lib.Extensions
 {
@@ -79,6 +84,31 @@ namespace Pamux.Lib.Extensions
             {
                 c.enabled = true;
             }
+        }
+
+        public static void AddChildButtonOnClickListener(this Transform transform, string name, UnityAction listener)
+        {
+            var button = transform.FindUIElement<Button>(name);
+            button.onClick.AddListener(listener);
+        }
+
+        public static T FindUIElement<T>(this Transform transform, string name)
+            where T : UIBehaviour
+        {
+            //for(int i = 0; i < transform.childCount; ++i)
+            //{
+            //    var child = transform.GetChild(i);
+            //    Debug.Log(child.name);
+            //}
+
+            // Name is case sensitive
+            var container = transform.Find(name);
+            if (container == null)
+            {
+                return null;
+            }
+
+            return container.GetComponent<T>();
         }
     }
 }

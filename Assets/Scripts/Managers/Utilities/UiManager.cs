@@ -14,23 +14,35 @@ namespace Pamux.Lib.Managers
     public class UiManager : Singleton<UiManager>
     {
         public RectTransform WorldSpaceCanvas { get; private set; }
-        public RectTransform ShowMouseClick { get; private set; }
+        public RectTransform CharacterTargetIndicator { get; private set; }
         public RectTransform ScreenSpaceCanvas { get; private set; }
         public RectTransform DebugUiPanel { get; private set; }
 
+        public RectTransform MiniMapPanel { get; private set; }
+
+        public RectTransform UiCamera { get; private set; }
         protected override void Awake()
         {
             base.Awake();
 
+
+            UiCamera = transform.InstantiatePrefabAsChild("Prefabs/ui/UiCamera") as RectTransform;
+
             ScreenSpaceCanvas = transform.InstantiatePrefabAsChild("Prefabs/ui/ScreenSpaceCanvas") as RectTransform;
-
-            DebugUiPanel = ScreenSpaceCanvas.InstantiatePrefabAsChild("Prefabs/ui/DebugUiPanel") as RectTransform;
-            DebugUiPanel.offsetMax = Vector2.one;
-            DebugUiPanel.offsetMin = Vector2.zero;
-
+            var canvas = ScreenSpaceCanvas.GetComponent<Canvas>();
+            canvas.worldCamera = UiCamera.GetComponent<Camera>();
 
             WorldSpaceCanvas = transform.InstantiatePrefabAsChild("Prefabs/ui/WorldSpaceCanvas") as RectTransform;
-            ShowMouseClick = WorldSpaceCanvas.InstantiatePrefabAsChild("Prefabs/ui/ShowMouseClick") as RectTransform;
+
+            //MiniMapPanel = ScreenSpaceCanvas.InstantiatePrefabAsChild("Prefabs/ui/MiniMapPanel") as RectTransform;
+            //MiniMapPanel.offsetMax = Vector2.one;
+            //MiniMapPanel.offsetMin = Vector2.zero;
+
+            //DebugUiPanel = ScreenSpaceCanvas.InstantiatePrefabAsChild("Prefabs/ui/DebugUiPanel") as RectTransform;
+            //DebugUiPanel.offsetMax = Vector2.one;
+            //DebugUiPanel.offsetMin = Vector2.zero;
+
+            CharacterTargetIndicator = WorldSpaceCanvas.InstantiatePrefabAsChild("Prefabs/ui/CharacterTargetIndicator") as RectTransform;
         }
     }
 }

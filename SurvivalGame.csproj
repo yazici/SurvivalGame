@@ -12,15 +12,12 @@
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.2.0f3</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion>6</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
@@ -414,7 +411,7 @@
     <Compile Include="Assets\Scripts\Enums\GameObjectTypes.cs" />
     <Compile Include="Assets\Scripts\Enums\LogLevels.cs" />
     <Compile Include="Assets\Scripts\Enums\PamuxResourceTypes.cs" />
-    <Compile Include="Assets\Scripts\Enums\PlayerCameraTypes.cs" />
+    <Compile Include="Assets\Scripts\Enums\PlayerPointOfViewTypes.cs" />
     <Compile Include="Assets\Scripts\Enums\Seasons.cs" />
     <Compile Include="Assets\Scripts\Enums\TimeOfDay.cs" />
     <Compile Include="Assets\Scripts\Enums\WorldSizes.cs" />
@@ -424,11 +421,13 @@
     <Compile Include="Assets\Scripts\Extensions\RectTransformExtensions.cs" />
     <Compile Include="Assets\Scripts\Extensions\StringExtensions.cs" />
     <Compile Include="Assets\Scripts\Extensions\Vector2Extensions.cs" />
+    <Compile Include="Assets\Scripts\GameObjects\FirstPersonPlayerPointOfView.cs" />
     <Compile Include="Assets\Scripts\GameObjects\GameModel\BaseModel.cs" />
     <Compile Include="Assets\Scripts\GameObjects\GameObjectFactory.cs" />
     <Compile Include="Assets\Scripts\GameObjects\GameObjectTypes.cs" />
-    <Compile Include="Assets\Scripts\GameObjects\Player.cs" />
+    <Compile Include="Assets\Scripts\GameObjects\PlayerPointOfView.cs" />
     <Compile Include="Assets\Scripts\GameObjects\Taggable.cs" />
+    <Compile Include="Assets\Scripts\GameObjects\ThirdPersonPlayerPointOfView.cs" />
     <Compile Include="Assets\Scripts\GameObjects\WeightedTag.cs" />
     <Compile Include="Assets\Scripts\Managers\Arts\ArtsManager.cs" />
     <Compile Include="Assets\Scripts\Managers\Arts\AudioManager.cs" />
@@ -510,6 +509,8 @@
     <Compile Include="Assets\Scripts\Utilities\Singleton.cs" />
     <Compile Include="Assets\Scripts\Utilities\SmoothFollow.cs" />
     <Compile Include="Assets\Scripts\Utilities\StringBuilding.cs" />
+    <Compile Include="Assets\Scripts\Utilities\UI\DebugUi.cs" />
+    <Compile Include="Assets\Scripts\Utilities\UI\MiniMap.cs" />
     <Compile Include="Assets\Scripts\Utilities\UI\UiCanvas.cs" />
     <Compile Include="Assets\Scripts\Utilities\WorldGenerator\AssetLibrary.cs" />
     <Compile Include="Assets\Scripts\Utilities\WorldGenerator\AssetOpinions.cs" />

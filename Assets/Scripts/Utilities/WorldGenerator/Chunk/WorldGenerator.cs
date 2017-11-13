@@ -20,7 +20,7 @@ namespace Pamux.Lib.WorldGen
 
         private string previousPositionChunkKey;
 
-        private Vector3 Position => PlayerManager.LocalPlayer == null ? Vector3.zero : PlayerManager.LocalPlayer.transform.position;
+        private Vector3 Position => PlayerManager.LocalPlayerPointOfView == null ? Vector3.zero : PlayerManager.LocalPlayerPointOfView.transform.position;
 
         public INoiseMaker NoiseMaker;
 

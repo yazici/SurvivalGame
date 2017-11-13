@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Pamux.Lib.Enums
 {
-    public enum PlayerCameraTypes
+    public enum PlayerPointOfViewTypes
     {
+        Unset,
         FirstPerson,
         ThirdPerson
     }

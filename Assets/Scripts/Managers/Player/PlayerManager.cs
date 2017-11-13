@@ -19,45 +19,31 @@ namespace Pamux.Lib.Managers
 
     public class PlayerManager : Singleton<PlayerManager>
     {
-        public static Player localPlayer;
-        public static Player LocalPlayer => localPlayer;
+        public static PlayerPointOfView LocalPlayerPointOfView => localPlayerPointOfViewType == PlayerPointOfViewTypes.FirstPerson
+                                                ? firstPersonPlayerPointOfView as PlayerPointOfView
+                                                : thirdPersonPlayerPointOfView as PlayerPointOfView;
 
-        private static Player thirdPersonPlayer;
-        private static Player firstPersonPlayer;
+        private static ThirdPersonPlayerPointOfView thirdPersonPlayerPointOfView;
+        private static FirstPersonPlayerPointOfView firstPersonPlayerPointOfView;        
 
-        private GameObject thirdPersonCamera;
-
-
-        public void ActivateLocalPlayerCameraType(PlayerCameraTypes playerCameraType)
+        private static PlayerPointOfViewTypes localPlayerPointOfViewType = PlayerPointOfViewTypes.Unset;
+        public static PlayerPointOfViewTypes LocalPlayerPointOfViewType
         {
-            Player inactivePlayer = null;
-
-            switch (playerCameraType)
+            get
             {
-                case PlayerCameraTypes.FirstPerson:
-                    localPlayer = firstPersonPlayer;
-                    inactivePlayer = thirdPersonPlayer;
-                    thirdPersonCamera.SetActive(false);
-                    break;
-
-                case PlayerCameraTypes.ThirdPerson:
-                    localPlayer = thirdPersonPlayer;
-                    inactivePlayer = firstPersonPlayer;
-
-                    var cameraFollow = thirdPersonCamera.GetComponent<SmoothFollow>();
-                    cameraFollow.target = thirdPersonPlayer.transform;
-                    thirdPersonCamera.SetActive(true);
-
-                    break;
+                return localPlayerPointOfViewType;
             }
 
-            inactivePlayer.gameObject.SetActive(false);
-            localPlayer.gameObject.SetActive(true);
-        }
+            set
+            {
+                if (value == localPlayerPointOfViewType)
+                {
+                    return;
+                }
 
-        private void OnChunkIsReady(string chunkKey)
-        {
-            ActivateLocalPlayerCameraType(PlayerCameraTypes.ThirdPerson);
+                localPlayerPointOfViewType = value;
+                LocalPlayerPointOfView.Activate();
+            }
         }
 
         protected override void Awake()
@@ -68,18 +54,16 @@ namespace Pamux.Lib.Managers
             var go = Instantiate(res);
             go.SetActive(false);
             go.transform.parent = this.transform;
-            firstPersonPlayer = go.AddComponent<Player>();
+            firstPersonPlayerPointOfView = go.AddComponent<FirstPersonPlayerPointOfView>();
 
             res = Resources.Load("Prefabs/ThirdPersonController") as GameObject;
             go = Instantiate(res);
             go.SetActive(false);
             go.transform.parent = this.transform;
-            thirdPersonPlayer = go.AddComponent<Player>();
+            thirdPersonPlayerPointOfView = go.AddComponent<ThirdPersonPlayerPointOfView>();
 
-            res = Resources.Load("Prefabs/CameraWithWeather") as GameObject;
-            thirdPersonCamera = Instantiate(res);
-            thirdPersonCamera.transform.parent = thirdPersonPlayer.transform;
-            thirdPersonCamera.SetActive(false);
+            thirdPersonPlayerPointOfView.OtherLocalPlayerPointOfView = firstPersonPlayerPointOfView;
+            firstPersonPlayerPointOfView.OtherLocalPlayerPointOfView = thirdPersonPlayerPointOfView;
         }
 
         protected void Update()
@@ -89,13 +73,16 @@ namespace Pamux.Lib.Managers
                 return;
             }
 
-            if (localPlayer == null)
+            if (localPlayerPointOfViewType == PlayerPointOfViewTypes.Unset)
             { 
-                ActivateLocalPlayerCameraType(PlayerCameraTypes.ThirdPerson);
+                firstPersonPlayerPointOfView.transform.position 
+                    = new Vector3(firstPersonPlayerPointOfView.transform.position.x, 
+                                    ChunkCache.GetElevation(firstPersonPlayerPointOfView.transform.position) + 0.5f,
+                                    firstPersonPlayerPointOfView.transform.position.z);
 
-                localPlayer.transform.position = new Vector3(localPlayer.transform.position.x, ChunkCache.GetElevation(localPlayer.transform.position) + 0.5f, localPlayer.transform.position.z);
-                localPlayer.GetComponent<Rigidbody>().useGravity = true;
+                firstPersonPlayerPointOfView.GetComponent<Rigidbody>().useGravity = true;
 
+                LocalPlayerPointOfViewType = PlayerPointOfViewTypes.ThirdPerson;
             }
         }
     }
