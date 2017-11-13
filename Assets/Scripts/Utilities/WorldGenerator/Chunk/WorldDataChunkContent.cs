@@ -30,7 +30,7 @@ namespace Pamux.Lib.WorldGen
 
         internal void CreateTestObjects()
         {
-            var chunkOrigin = WorldDataChunk.OriginAtDefaultElevation;
+            var chunkOrigin = WorldDataChunk.CenterAtDefaultElevation;
             var o = gameObjectFactory.Create(GameObjectTypes.PrimitiveSphere, chunkOrigin);
 
             o.transform.localScale *= 2f;
@@ -50,7 +50,7 @@ namespace Pamux.Lib.WorldGen
                 throw new ArgumentNullException(nameof(parameters.Templates));
 			}
 
-            var chunkOrigin = WorldDataChunk.OriginAtDefaultElevation;
+            var chunkOrigin = WorldDataChunk.CenterAtDefaultElevation;
 			
 			if (randomVector3Provider == null)
 			{
@@ -90,6 +90,9 @@ namespace Pamux.Lib.WorldGen
             throw new NotImplementedException();
         }
 
+
+        //http://wiki.unity3d.com/index.php?title=TerrainPerlinNoise
+
         public void CreateTerrain()
         {
             TerrainData = new TerrainData
@@ -100,10 +103,10 @@ namespace Pamux.Lib.WorldGen
             TerrainData.SetHeights(0, 0, DataMaps.HeightMap.Map);
             ApplyTextures();
 
-            TerrainData.size = new Vector3(S.Length, S.Height, S.Length);
+            TerrainData.size = S.ChunkSize;
             var newTerrainGameObject = Terrain.CreateTerrainGameObject(TerrainData);
             
-            newTerrainGameObject.transform.position = new Vector3(WorldDataChunk.X * S.Length, 0, WorldDataChunk.Z * S.Length);
+            newTerrainGameObject.transform.position = WorldDataChunk.ChunkCenterWorldAtZeroElevation();
 
             Terrain = newTerrainGameObject.GetComponent<Terrain>();
             Terrain.heightmapPixelError = 8;

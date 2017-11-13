@@ -24,9 +24,14 @@ namespace Pamux.Lib.WorldGen
 
         public int AlphaMapResolution = 129;
 
-        public int Length = 100;
+        public float ChunkWorldWidth = 1000.0f; // 1km - x
+        public float ChunkWorldLength = 1000.0f;// 1km - z
+        public float ChunkWorldDiagonal;
+        public float ChunkWorldHalfDiagonal;
 
-        public int Height = 40;
+        public float MaxHeight = 40.0f; // 40m- y
+
+        public Vector3 ChunkSize { get; private set; }
 
         //http://www.jgallant.com/procedurally-generating-wrapping-world-maps-in-unity-csharp-part-4/
         // https://github.com/jongallant/WorldGeneratorFinal
@@ -58,6 +63,11 @@ namespace Pamux.Lib.WorldGen
         {
             base.Awake();
 
+            ChunkWorldDiagonal = Mathf.Sqrt(ChunkWorldLength * ChunkWorldLength + ChunkWorldWidth * ChunkWorldWidth);
+            ChunkWorldHalfDiagonal = ChunkWorldDiagonal / 2;
+
+            ChunkSize = new Vector3(ChunkWorldWidth, MaxHeight, ChunkWorldLength);
+
             if (Biomes == null || Biomes.Length == 0)
             { 
                 Biomes = new BiomeData[]
@@ -74,14 +84,22 @@ namespace Pamux.Lib.WorldGen
             }
         }
 
-        public Vector3 GetVector3AtDefaultElevation(int x, int z)
+        internal Vector2 ChunkCenterWorld(int x, int z)
         {
-            return new Vector3(x * Length, DefaultGameObjectElevation, z * Length);
+            return new Vector2(x * ChunkWorldWidth, z * ChunkWorldLength);
         }
-		
-		public Vector3 GetVector3AtCloudElevation(int x, int z)
+
+        internal Vector3 ChunkCenterWorldAtZeroElevation(int x, int z)
         {
-            return new Vector3(x * Length, DefaultCloudElevation, z * Length);
+            return new Vector3(x * ChunkWorldWidth, 0.0f, z * ChunkWorldLength);
+        }
+        internal Vector3 ChunkCenterWorldAtDefaultElevation(int x, int z)
+        {
+            return new Vector3(x * ChunkWorldWidth, DefaultGameObjectElevation, z * ChunkWorldLength);
+        }
+        internal Vector3 ChunkCenterWorldAtCloudElevation(int x, int z)
+        {
+            return new Vector3(x * ChunkWorldWidth, DefaultCloudElevation, z * ChunkWorldLength);
         }
     }
 }

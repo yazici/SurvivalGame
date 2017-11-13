@@ -31,11 +31,13 @@ namespace Pamux.Lib.WorldGen
 
         public WorldDataMaps DataMaps { get; private set; }
 
-        internal static void WorldToChunkPosition(Vector3 worldPosition, ref int x, ref int z)
+        internal static void WorldToChunkIndices(Vector3 worldPosition, ref int x, ref int z)
         {
-            x = (int)Mathf.Floor(worldPosition.x / S.Length);
-            z = (int)Mathf.Floor(worldPosition.z / S.Length);
+            x = (int)Mathf.Floor(worldPosition.x / S.ChunkWorldWidth);
+            z = (int)Mathf.Floor(worldPosition.z / S.ChunkWorldLength);
         }
+
+        
 
         internal static string GetKey(int x, int z)
         {
@@ -47,7 +49,7 @@ namespace Pamux.Lib.WorldGen
             int x = 0;
             int z = 0;
 
-            WorldToChunkPosition(position, ref x, ref z);
+            WorldToChunkIndices(position, ref x, ref z);
 
             return WorldDataChunk.GetKey(x, z);
         }
@@ -273,8 +275,8 @@ namespace Pamux.Lib.WorldGen
             }
         }
 
-        public Vector3 OriginAtDefaultElevation { get { return S.GetVector3AtDefaultElevation(X, Z); } }
-		public Vector3 OriginAtCloudElevation { get { return S.GetVector3AtCloudElevation(X, Z); } }
+        public Vector3 CenterAtDefaultElevation { get { return S.ChunkCenterWorldAtDefaultElevation(X, Z); } }
+		public Vector3 CenterAtCloudElevation { get { return S.ChunkCenterWorldAtCloudElevation(X, Z); } }
 
         public Vector3 NorthWestUnit{ get { return new Vector3(-1.0f, 0, +1.0f); } }
         public Vector3 NorthEastUnit { get { return new Vector3(-1.0f, 0, +1.0f); } }
@@ -286,15 +288,14 @@ namespace Pamux.Lib.WorldGen
         {
             get
             {
-                var origin = OriginAtDefaultElevation;
-                var halfHypotenuse = (float) Math.Sqrt(S.Length * S.Length) / 2;
+                var center = CenterAtDefaultElevation;
 
                 return new List<Vector3>
                 {
-                    origin + NorthWestUnit * halfHypotenuse,
-                    origin + NorthEastUnit * halfHypotenuse,
-                    origin + SouthEastUnit * halfHypotenuse,
-                    origin + SouthWestUnit * halfHypotenuse,
+                    center + NorthWestUnit * S.ChunkWorldHalfDiagonal,
+                    center + NorthEastUnit * S.ChunkWorldHalfDiagonal,
+                    center + SouthEastUnit * S.ChunkWorldHalfDiagonal,
+                    center + SouthWestUnit * S.ChunkWorldHalfDiagonal,
                 };
             }
         }
@@ -304,12 +305,12 @@ namespace Pamux.Lib.WorldGen
         {
             get
             {
-                var origin = OriginAtDefaultElevation;
-                var hypotenuse = (float)Math.Sqrt(S.Length * S.Length);
-                var randomDistanceX = (float)G.Random.NextDouble() * hypotenuse;
-                var randomDistanceZ = (float)G.Random.NextDouble() * hypotenuse;
+                var center = CenterAtDefaultElevation;
 
-                var randomPoint = origin + new Vector3(randomDistanceX, 0f, randomDistanceZ);
+                var randomDistanceX = (float)G.Random.NextDouble() * S.ChunkWorldDiagonal;
+                var randomDistanceZ = (float)G.Random.NextDouble() * S.ChunkWorldDiagonal;
+
+                var randomPoint = center + new Vector3(randomDistanceX, 0f, randomDistanceZ);
 
                 var elevation = ChunkCache.GetElevation(randomPoint);
 
@@ -322,14 +323,14 @@ namespace Pamux.Lib.WorldGen
         {
             get
             {
-                var origin = OriginAtCloudElevation;
-                var hypotenuse = (float)Math.Sqrt(S.Length * S.Length);
-                var randomDistanceX = (float)G.Random.NextDouble() * hypotenuse;
-                var randomDistanceZ = (float)G.Random.NextDouble() * hypotenuse;
+                var center = CenterAtCloudElevation;
+
+                var randomDistanceX = (float)G.Random.NextDouble() * S.ChunkWorldDiagonal;
+                var randomDistanceZ = (float)G.Random.NextDouble() * S.ChunkWorldDiagonal;
                 //var randomElevation = (float)G.Random.NextDouble() * origin.y/10f;
 				
 
-                return origin + new Vector3(randomDistanceX, 0f, randomDistanceZ);
+                return center + new Vector3(randomDistanceX, 0f, randomDistanceZ);
             }
         }
 
@@ -352,7 +353,12 @@ namespace Pamux.Lib.WorldGen
             WorldDataChunk2.Neighbors.Add(WorldDataChunk1);
         }
 
-        
+
+        internal Vector3 ChunkCenterWorldAtZeroElevation()
+        {
+            return new Vector3(X * S.ChunkWorldWidth, 0.0f, Z * S.ChunkWorldLength);
+        }
+
         #endregion
     }
 }

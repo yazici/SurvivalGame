@@ -130,7 +130,7 @@ namespace Pamux.Lib.GameObjects
 
         internal GameObject Create(GameObjectTypes type, int x, int z)
         {
-            return Create(type, S.GetVector3AtDefaultElevation(x, z));
+            return Create(type, S.ChunkCenterWorldAtDefaultElevation(x, z));
         }
     }
 }

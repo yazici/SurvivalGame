@@ -4,11 +4,14 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Pamux.Lib.Enums;
 using Pamux.Lib.Managers;
+using UnityEngine;
 
 namespace Pamux.Lib.Utilities
 {
     public class DebugUi : Singleton<DebugUi>
     {
+        private RectTransform DebugUiPanel;
+
         public bool isExpanded;
         public bool IsExpanded
         {
@@ -23,6 +26,19 @@ namespace Pamux.Lib.Utilities
                     return;
                 }
                 isExpanded = value;
+
+                if (isExpanded)
+                {
+                    DebugUiPanel.offsetMax = Vector2.one *3;
+                    DebugUiPanel.offsetMin = Vector2.zero;
+
+                }
+                else
+                { 
+                    DebugUiPanel.offsetMax = Vector2.one;
+                    DebugUiPanel.offsetMin = Vector2.zero;
+                }
+                
             }
         }
 
@@ -44,11 +60,29 @@ namespace Pamux.Lib.Utilities
             }
         }
 
+
+
+        private void ZoomBy(float sign)
+        {
+            if (PlayerManager.LocalPlayerPointOfViewType != PlayerPointOfViewTypes.ThirdPerson)
+            {
+                return;
+            }
+            ZoomLevel += sign * ZoomLevelDelta;
+        }
+
+        protected override void Awake()
+        {
+            base.Awake();
+
+            DebugUiPanel = transform as RectTransform;
+        }
+
         private void Start()
         {
             transform.AddChildButtonOnClickListener("ButtonScreenLogToggle", () => { IsExpanded = !IsExpanded; });
-            transform.AddChildButtonOnClickListener("ButtonZoomIn", () => { ZoomLevel += ZoomLevelDelta;  });
-            transform.AddChildButtonOnClickListener("ButtonZoomOut", () => { ZoomLevel -= ZoomLevelDelta; });
+            transform.AddChildButtonOnClickListener("ButtonZoomIn", () => { ZoomBy(-1); });
+            transform.AddChildButtonOnClickListener("ButtonZoomOut", () => { ZoomBy(1); });
             transform.AddChildButtonOnClickListener("ButtonTogglePointOfView", () => {
                 PlayerManager.LocalPlayerPointOfViewType = PlayerManager.LocalPlayerPointOfViewType == PlayerPointOfViewTypes.ThirdPerson 
                     ? PlayerPointOfViewTypes.FirstPerson

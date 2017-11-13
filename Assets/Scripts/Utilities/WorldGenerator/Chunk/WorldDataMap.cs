@@ -27,12 +27,13 @@ namespace Pamux.Lib.WorldGen
 
         internal void ForEachPoint(int cX, int cZ, Func<float, float, float> valueProvider)
         {
-            for (var zRes = 0; zRes < Resolution; ++zRes)
+            var resolution = (float)(Resolution - 1);
+            for (int zRes = 0; zRes < Resolution; ++zRes)
             {
-                for (var xRes = 0; xRes < Resolution; ++xRes)
+                for (int xRes = 0; xRes < Resolution; ++xRes)
                 {
-                    var xCoordinate = (cX + (float) (xRes / (Resolution - 1)));
-                    var zCoordinate = (cZ + (float) (zRes / (Resolution - 1)));
+                    float xCoordinate = (cX + (xRes / resolution));
+                    float zCoordinate = (cZ + (zRes / resolution));
 
                     Map[xRes, zRes] = valueProvider.Invoke(xCoordinate, zCoordinate);
                 }

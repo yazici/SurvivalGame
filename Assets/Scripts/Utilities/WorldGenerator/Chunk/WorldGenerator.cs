@@ -20,7 +20,10 @@ namespace Pamux.Lib.WorldGen
 
         private string previousPositionChunkKey;
 
-        private Vector3 Position => PlayerManager.LocalPlayerPointOfView == null ? Vector3.zero : PlayerManager.LocalPlayerPointOfView.transform.position;
+        private Vector3 Position => 
+            PlayerManager.LocalPlayerPointOfView == null
+                ? Vector3.zero
+                : PlayerManager.LocalPlayerPointOfView.transform.position;
 
         public INoiseMaker NoiseMaker;
 
@@ -52,11 +55,11 @@ namespace Pamux.Lib.WorldGen
         private void Update()
         {
             ChunkCache.TidyUp();
-            var playerChunkPosition = WorldDataChunk.GetKey(Position);
-            if (playerChunkPosition != previousPositionChunkKey)
+            var currentPositionChunkKey = WorldDataChunk.GetKey(Position);
+            if (currentPositionChunkKey != previousPositionChunkKey)
             {
                 ChunkCache.Update(Position, Radius);
-                previousPositionChunkKey = playerChunkPosition;
+                previousPositionChunkKey = currentPositionChunkKey;
             }
         }
     }
