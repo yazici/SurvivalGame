@@ -275,6 +275,9 @@ namespace Pamux.Lib.WorldGen
             }
         }
 
+
+        
+        public Vector3 CenterAtZeroElevation { get { return S.ChunkCenterWorldAtZeroElevation(X, Z); } }
         public Vector3 CenterAtDefaultElevation { get { return S.ChunkCenterWorldAtDefaultElevation(X, Z); } }
 		public Vector3 CenterAtCloudElevation { get { return S.ChunkCenterWorldAtCloudElevation(X, Z); } }
 
@@ -284,11 +287,38 @@ namespace Pamux.Lib.WorldGen
         public Vector3 SouthWestUnit { get { return new Vector3(-1.0f, 0, +1.0f); } }
 
 
-        public IEnumerable<Vector3> CornersAtDefaultElevation
+        public IEnumerable<Vector3> CornersAtSurfaceElevation
         {
             get
             {
-                var center = CenterAtDefaultElevation;
+                var center = CenterAtZeroElevation;
+
+                return new List<Vector3>
+                {
+                    GetTerrainSurfaceWorldCoordinates(center + NorthWestUnit * S.ChunkWorldHalfDiagonal),
+                    GetTerrainSurfaceWorldCoordinates(center + NorthEastUnit * S.ChunkWorldHalfDiagonal),
+                    GetTerrainSurfaceWorldCoordinates(center + SouthEastUnit * S.ChunkWorldHalfDiagonal),
+                    GetTerrainSurfaceWorldCoordinates(center + SouthWestUnit * S.ChunkWorldHalfDiagonal)
+                };
+            }
+        }
+
+        public static Vector3 GetTerrainSurfaceWorldCoordinates(Vector3 vector)
+        {
+            return new Vector3(vector.x, ChunkCache.GetElevation(vector.x, vector.z), vector.z);
+        }
+
+        public static Vector3 GetTerrainSurfaceWorldCoordinates(float x, float z)
+        {
+            return new Vector3(x, ChunkCache.GetElevation(x, z), z);
+        }
+
+        public IEnumerable<Vector3> CornersAtZeroElevation
+        {
+            get
+            {
+                var center = CenterAtZeroElevation;
+                
 
                 return new List<Vector3>
                 {
@@ -305,7 +335,7 @@ namespace Pamux.Lib.WorldGen
         {
             get
             {
-                var center = CenterAtDefaultElevation;
+                var center = CenterAtZeroElevation;
 
                 var randomDistanceX = (float)G.Random.NextDouble() * S.ChunkWorldDiagonal;
                 var randomDistanceZ = (float)G.Random.NextDouble() * S.ChunkWorldDiagonal;

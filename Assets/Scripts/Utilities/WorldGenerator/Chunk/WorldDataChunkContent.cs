@@ -35,7 +35,7 @@ namespace Pamux.Lib.WorldGen
 
             o.transform.localScale *= 2f;
 
-            foreach (var chunkCorner in WorldDataChunk.CornersAtDefaultElevation)
+            foreach (var chunkCorner in WorldDataChunk.CornersAtSurfaceElevation)
             {
                 o = gameObjectFactory.Create(GameObjectTypes.PrimitiveCylinder, chunkCorner);
 
@@ -84,12 +84,6 @@ namespace Pamux.Lib.WorldGen
 
             //CreateRandomObjects(5, A.clouds, () => WorldDataChunk.NextRandomVector3OnTheClouds);
         }
-
-        private void CreateRandomObjects(int v, object flowers)
-        {
-            throw new NotImplementedException();
-        }
-
 
         //http://wiki.unity3d.com/index.php?title=TerrainPerlinNoise
 

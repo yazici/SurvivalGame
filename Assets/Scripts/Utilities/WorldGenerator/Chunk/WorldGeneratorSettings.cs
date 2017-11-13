@@ -29,7 +29,7 @@ namespace Pamux.Lib.WorldGen
         public float ChunkWorldDiagonal;
         public float ChunkWorldHalfDiagonal;
 
-        public float MaxHeight = 40.0f; // 40m- y
+        public float MaxHeight = 40.0f; // 40m - y
 
         public Vector3 ChunkSize { get; private set; }
 

@@ -142,6 +142,12 @@ namespace Pamux.Lib.WorldGen
             }
         }
 
+
+        public static float GetElevation(float x, float z)
+        {
+            return GetElevation(new Vector3(x, 0.0f, z));
+        }
+
         public static float GetElevation(Vector3 worldPosition)
         {
             var chunk = GetGeneratedChunk(worldPosition);
