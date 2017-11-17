@@ -17,7 +17,8 @@ namespace Pamux.Lib.Managers
     {
         public RectTransform WorldSpaceCanvas { get; private set; }
         public RectTransform CharacterTargetIndicator { get; private set; }
-        public RectTransform ScreenSpaceCanvas { get; private set; }
+        public RectTransform ScreenSpaceOrthographicCanvas { get; private set; }
+        public RectTransform ScreenSpacePerspectiveCanvas { get; private set; }
         public RectTransform DebugUiPanel { get; private set; }
 
         public RectTransform MiniMapPanel { get; private set; }
@@ -27,22 +28,11 @@ namespace Pamux.Lib.Managers
         {
             base.Awake();
 
-            UiCamera = transform.InstantiatePrefabAsChild("Prefabs/ui/UiCamera");
-            
 
-            ScreenSpaceCanvas = transform.InstantiatePrefabAsChild("Prefabs/ui/ScreenSpaceCanvas") as RectTransform;
-            var canvas = ScreenSpaceCanvas.GetComponent<Canvas>();
-            canvas.worldCamera = UiCamera.GetComponent<Camera>();
-
+            ScreenSpacePerspectiveCanvas = transform.InstantiatePrefabAsChild("Prefabs/ui/ScreenSpacePerspectiveCanvas") as RectTransform;
+            ScreenSpaceOrthographicCanvas = transform.InstantiatePrefabAsChild("Prefabs/ui/ScreenSpaceOrthographicCanvas") as RectTransform;
             WorldSpaceCanvas = transform.InstantiatePrefabAsChild("Prefabs/ui/WorldSpaceCanvas") as RectTransform;
 
-            //MiniMapPanel = ScreenSpaceCanvas.InstantiatePrefabAsChild("Prefabs/ui/MiniMapPanel") as RectTransform;
-            //MiniMapPanel.offsetMax = Vector2.one;
-            //MiniMapPanel.offsetMin = Vector2.zero;
-
-            //DebugUiPanel = ScreenSpaceCanvas.InstantiatePrefabAsChild("Prefabs/ui/DebugUiPanel") as RectTransform;
-            //DebugUiPanel.offsetMax = Vector2.one;
-            //DebugUiPanel.offsetMin = Vector2.zero;
 
             CharacterTargetIndicator = WorldSpaceCanvas.InstantiatePrefabAsChild("Prefabs/ui/CharacterTargetIndicator") as RectTransform;
         }
