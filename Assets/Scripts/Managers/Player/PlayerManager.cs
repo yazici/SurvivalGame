@@ -50,18 +50,19 @@ namespace Pamux.Lib.Managers
         {
             base.Awake();
 
-            var res = Resources.Load("Prefabs/FirstPersonController") as GameObject;
+            var res = Resources.Load("Prefabs/Characters/RigidBodyFirstPersonController") as GameObject;
+            //var res = Resources.Load("Prefabs/Characters/FirstPersonController") as GameObject;
             var go = Instantiate(res);
             go.SetActive(false);
             go.transform.parent = this.transform;
             firstPersonPlayerPointOfView = go.AddComponent<FirstPersonPlayerPointOfView>();
 
-            res = Resources.Load("Prefabs/ThirdPersonController") as GameObject;
+            res = Resources.Load("Prefabs/Characters/ThirdPersonController") as GameObject;
             go = Instantiate(res);
             go.SetActive(false);
             go.transform.parent = this.transform;
             thirdPersonPlayerPointOfView = go.AddComponent<ThirdPersonPlayerPointOfView>();
-
+            
             thirdPersonPlayerPointOfView.OtherLocalPlayerPointOfView = firstPersonPlayerPointOfView;
             firstPersonPlayerPointOfView.OtherLocalPlayerPointOfView = thirdPersonPlayerPointOfView;
         }

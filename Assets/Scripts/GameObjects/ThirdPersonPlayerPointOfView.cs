@@ -5,27 +5,21 @@ namespace Pamux.Lib.Utilities
 {
     public class ThirdPersonPlayerPointOfView : PlayerPointOfView
     {
-        private GameObject thirdPersonCamera;
+        private Camera thirdPersonCamera;
 
         private void Awake()
         {
-            var res = Resources.Load("Prefabs/CameraWithWeather") as GameObject;
-            thirdPersonCamera = Instantiate(res);
-            thirdPersonCamera.transform.parent = transform;
-            thirdPersonCamera.SetActive(false);
-
-            var cameraFollow = thirdPersonCamera.GetComponent<SmoothFollow>();
-            cameraFollow.target = transform;
+            thirdPersonCamera = gameObject.GetComponentInChildren<Camera>();
         }
 
         private void OnEnable()
         {
-            thirdPersonCamera.SetActive(true);
+            thirdPersonCamera.gameObject.SetActive(true);
         }
 
         private void OnDisable()
         {
-            thirdPersonCamera.SetActive(false);
+            thirdPersonCamera.gameObject.SetActive(false);
         }
     }
 }
