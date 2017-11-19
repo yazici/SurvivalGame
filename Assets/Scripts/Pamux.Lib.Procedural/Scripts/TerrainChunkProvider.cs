@@ -14,11 +14,12 @@ namespace Pamux.Lib.Procedural
     {
         private LruCache<string, TerrainChunk> chunkCache = new LruCache<string, TerrainChunk>(32);
 
-        private TerrainGenerator terrainGenerator;
-
         public TerrainChunkProvider(TerrainSettings terrainSettings)
         {
-            terrainGenerator = new TerrainGenerator(terrainSettings);
+            if (TerrainGenerator.Instance == null)
+            {
+                new TerrainGenerator(terrainSettings);
+            }
         }
 
         public async Task<TerrainChunk> GetChunkAsync(Transform parent, int x, int y, int lodIndex)

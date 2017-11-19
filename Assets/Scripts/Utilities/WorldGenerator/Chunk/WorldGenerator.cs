@@ -44,7 +44,7 @@ namespace Pamux.Lib.WorldGen
                 if (ChunkCache.IsChunkGenerated(chunkKey))
                 {
                     previousPositionChunkKey = chunkKey;
-                    WorldManager.Instance.ChunkIsReady = true;
+                    //WorldManager.Instance.ChunkIsReady = true; IsReady
                     break;
                 }
                 yield return null;

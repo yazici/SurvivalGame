@@ -3,6 +3,8 @@ using Pamux.Lib.Utilities;
 using Pamux.Lib.Enums;
 using Pamux.Lib.GameObjects;
 using Pamux.Lib.WorldGen;
+using System.Threading;
+using Pamux.Lib.Procedural;
 
 namespace Pamux.Lib.Managers
 {
@@ -19,6 +21,8 @@ namespace Pamux.Lib.Managers
 
     public class PlayerManager : Singleton<PlayerManager>
     {
+        public static ManualResetEventSlim IsAwake = new ManualResetEventSlim(false);
+
         public static PlayerPointOfView LocalPlayerPointOfView => localPlayerPointOfViewType == PlayerPointOfViewTypes.FirstPerson
                                                 ? firstPersonPlayerPointOfView as PlayerPointOfView
                                                 : thirdPersonPlayerPointOfView as PlayerPointOfView;
@@ -42,6 +46,11 @@ namespace Pamux.Lib.Managers
                 }
 
                 localPlayerPointOfViewType = value;
+
+                if (localPlayerPointOfViewType == PlayerPointOfViewTypes.Unset)
+                {
+                    return;
+                }
                 LocalPlayerPointOfView.Activate();
             }
         }
@@ -65,23 +74,29 @@ namespace Pamux.Lib.Managers
             
             thirdPersonPlayerPointOfView.OtherLocalPlayerPointOfView = firstPersonPlayerPointOfView;
             firstPersonPlayerPointOfView.OtherLocalPlayerPointOfView = thirdPersonPlayerPointOfView;
+
+            IsAwake.Set();
         }
 
         protected void Update()
         {
-            if (!WorldManager.Instance.ChunkIsReady)
+            if (!TerrainViewer.IsReady)
             {
                 return;
             }
 
             if (localPlayerPointOfViewType == PlayerPointOfViewTypes.Unset)
-            { 
-                firstPersonPlayerPointOfView.transform.position 
-                    = new Vector3(firstPersonPlayerPointOfView.transform.position.x, 
-                                    ChunkCache.GetElevation(firstPersonPlayerPointOfView.transform.position) + 0.5f,
-                                    firstPersonPlayerPointOfView.transform.position.z);
+            {
+                //firstPersonPlayerPointOfView.transform.position 
+                //    = new Vector3(firstPersonPlayerPointOfView.transform.position.x, 
+                //                    ChunkCache.GetElevation(firstPersonPlayerPointOfView.transform.position) + 0.5f,
+                //                    firstPersonPlayerPointOfView.transform.position.z);
 
+                firstPersonPlayerPointOfView.transform.position = WorldManager.Instance.GetGroundLevelPosition(firstPersonPlayerPointOfView.transform.position);
                 firstPersonPlayerPointOfView.GetComponent<Rigidbody>().useGravity = true;
+
+                thirdPersonPlayerPointOfView.transform.position = firstPersonPlayerPointOfView.transform.position;
+                thirdPersonPlayerPointOfView.GetComponent<Rigidbody>().useGravity = true;
 
                 LocalPlayerPointOfViewType = PlayerPointOfViewTypes.ThirdPerson;
             }

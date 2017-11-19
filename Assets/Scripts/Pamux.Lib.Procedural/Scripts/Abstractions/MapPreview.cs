@@ -32,10 +32,6 @@ namespace Pamux.Lib.Procedural
                 VertexInfo.TerrainSettings = terrainSettings;
             }
 
-            // TODO: needed for falloff?
-            textureData.ApplyToMaterial(terrainMaterial);
-            textureData.UpdateMeshHeights(terrainMaterial, heightMapSettings.minHeight, heightMapSettings.maxHeight);
-
             if (drawMode == DrawModes.FalloffMap)
             {
                 var falloffMap = FalloffGenerator.GenerateFalloffMap(meshSettings.numVertsPerLine);
@@ -63,13 +59,9 @@ namespace Pamux.Lib.Procedural
                 new MeshGenerator(meshSettings);
             }
 
-            var meshData = MeshGenerator.Instance.GenerateTerrainMesh(heightMap.values, editorPreviewLOD);//.GetAwaiter().GetResult();
+            var meshData = MeshGenerator.Instance.GenerateTerrainMesh(heightMap.values, editorPreviewLOD);
             DrawMesh(meshData);
         }
-
-
-
-
 
         public void DrawTexture(Texture2D texture)
         {
@@ -105,6 +97,10 @@ namespace Pamux.Lib.Procedural
 
         void OnValidate()
         {
+            if (terrainSettings == null)
+            {
+                return;
+            }
 
             if (meshSettings != null)
             {

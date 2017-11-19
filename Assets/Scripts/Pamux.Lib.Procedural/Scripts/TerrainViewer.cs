@@ -5,6 +5,9 @@ using Pamux.Lib.Procedural.Interfaces;
 using Pamux.Lib.Procedural.Abstractions;
 using Pamux.Lib.Procedural.Data;
 using Pamux.Lib.Utilities;
+using Pamux.Lib.Managers;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace Pamux.Lib.Procedural
 {
@@ -13,8 +16,6 @@ namespace Pamux.Lib.Procedural
     {
         private const float moveThresholdForChunkUpdate = 25f;
         private const float moveThresholdForChunkUpdateSquared = moveThresholdForChunkUpdate * moveThresholdForChunkUpdate;
-
-        private ITerrainChunkProvider TerrainChunkProvider;
 
         private Vector2 currentPosition;
         private Vector2 chunkVisibilityEvaluationPosition;
@@ -28,19 +29,36 @@ namespace Pamux.Lib.Procedural
         private bool ShouldReevaluateChunkVisibility => (chunkVisibilityEvaluationPosition - currentPosition).sqrMagnitude > moveThresholdForChunkUpdateSquared;
 
         private int chunksVisibleInViewDst;
-        public TerrainSettings terrainSettings;
-        void Start()
+        private TerrainSettings terrainSettings;
+
+        public static bool IsReady = false;
+
+        protected override void Awake()
         {
-            TerrainChunkProvider = new TerrainChunkProvider(terrainSettings);
+            base.Awake();
+
+            SafeAwakeAsync();
+        }
+
+        private async Task SafeAwakeAsync()
+        {
+            WorldManager.IsReadyEvent.Wait();
 
             var maxViewDst = terrainSettings.detailLevels[terrainSettings.detailLevels.Length - 1].visibleDstThreshold;
             chunksVisibleInViewDst = Mathf.RoundToInt(maxViewDst / terrainSettings.meshSettings.meshWorldSize);
 
-            UpdateVisibleChunks();
+            currentPosition = new Vector2(transform.position.x, transform.position.z);
+            await UpdateVisibleChunksAsync();
+            IsReady = true;
         }
 
         void Update()
         {
+            if (!IsReady)
+            {
+                return;
+            }
+
             currentPosition = new Vector2(transform.position.x, transform.position.z);
             if (IsOnChunkVisibilityEvaluationPosition)
             {
@@ -54,11 +72,11 @@ namespace Pamux.Lib.Procedural
 
             if (ShouldReevaluateChunkVisibility)
             {
-                UpdateVisibleChunks();
+                UpdateVisibleChunksAsync();
             }
         }
 
-        void UpdateVisibleChunks()
+        private Task UpdateVisibleChunksAsync()
         {
             chunkVisibilityEvaluationPosition = currentPosition;
 
@@ -71,7 +89,7 @@ namespace Pamux.Lib.Procedural
 
             var currentChunkCoordX = Mathf.RoundToInt(currentPosition.x / terrainSettings.meshSettings.meshWorldSize);
             var currentChunkCoordY = Mathf.RoundToInt(currentPosition.y / terrainSettings.meshSettings.meshWorldSize);
-
+            var tasks = new List<Task>();
             for (var yOffset = -chunksVisibleInViewDst; yOffset <= chunksVisibleInViewDst; yOffset++)
             {
                 for (var xOffset = -chunksVisibleInViewDst; xOffset <= chunksVisibleInViewDst; xOffset++)
@@ -84,9 +102,13 @@ namespace Pamux.Lib.Procedural
 
                     // TODO
                     var lodIndex = 0;
-                    var chunk = TerrainChunkProvider.GetChunkAsync(null /*parent*/, (int) viewedChunkCoord.x, (int) viewedChunkCoord.y, lodIndex);
-                    //chunk.onVisibilityChanged -= OnTerrainChunkVisibilityChanged;
-                    //chunk.onVisibilityChanged += OnTerrainChunkVisibilityChanged;
+                    var task = WorldManager.Instance.GetChunkAsync((int)viewedChunkCoord.x, (int)viewedChunkCoord.y, lodIndex);
+
+                    tasks.Add(task.ContinueWith((chunkTask) => {
+                        var chunk = chunkTask.Result;
+                        chunk.onVisibilityChanged -= OnTerrainChunkVisibilityChanged;
+                        chunk.onVisibilityChanged += OnTerrainChunkVisibilityChanged;
+                    }));
 
                     //chunk.onVisibilityChanged += OnTerrainChunkVisibilityChanged;
                     //chunk.Load();
@@ -104,6 +126,7 @@ namespace Pamux.Lib.Procedural
                     //}
                 }
             }
+            return Task.WhenAll(tasks);
         }
 
         private void OnTerrainChunkVisibilityChanged(TerrainChunk chunk, bool isVisible)
@@ -117,7 +140,5 @@ namespace Pamux.Lib.Procedural
                 visibleTerrainChunks.Remove(chunk);
             }
         }
-
     }
-
 }
