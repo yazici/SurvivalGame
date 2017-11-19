@@ -63,7 +63,7 @@ namespace Pamux.Lib.Editors
             bool showButtons = (options & EditorListOption.Buttons) != 0;
 
 
-            for (int i = 0; i < list.arraySize; i++)
+            for (int i = 0; i < list.arraySize; ++i)
             {
                 if (showButtons)
                 {

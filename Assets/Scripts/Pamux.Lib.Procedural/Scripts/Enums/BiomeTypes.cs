@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pamux.GameModel
+namespace Pamux.Lib.Procedural.Enums
 {
     public enum BiomeTypes
     {

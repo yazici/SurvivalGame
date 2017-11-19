@@ -111,7 +111,7 @@ namespace LibNoise.Generator
         private void UpdateWeights()
         {
             var f = 1.0;
-            for (var i = 0; i < Utils.OctavesMaximum; i++)
+            for (var i = 0; i < Utils.OctavesMaximum; ++i)
             {
                 _weights[i] = Math.Pow(f, -1.0);
                 f *= _lacunarity;
@@ -138,7 +138,7 @@ namespace LibNoise.Generator
             var weight = 1.0;
             var offset = 1.0; // TODO: Review why Offset is never assigned
             var gain = 2.0;   // TODO: Review why gain is never assigned
-            for (var i = 0; i < _octaveCount; i++)
+            for (var i = 0; i < _octaveCount; ++i)
             {
                 var nx = Utils.MakeInt32Range(x);
                 var ny = Utils.MakeInt32Range(y);

@@ -117,7 +117,7 @@ namespace LibNoise.Operator
             Clear();
             var ts = 2.0 / (steps - 1.0);
             var cv = -1.0;
-            for (var i = 0; i < steps; i++)
+            for (var i = 0; i < steps; ++i)
             {
                 Add(cv);
                 cv += ts;

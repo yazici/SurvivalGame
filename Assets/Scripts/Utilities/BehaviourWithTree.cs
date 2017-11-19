@@ -64,7 +64,7 @@ namespace Pamux.Lib.Utilities
         {
             var serializedNode = serializedNodes[index];
             var children = new List<Node>();
-            for (int i = 0; i != serializedNode.childCount; i++)
+            for (int i = 0; i != serializedNode.childCount; ++i)
                 children.Add(ReadNodeFromSerializedNodes(serializedNode.indexOfFirstChild + i));
 
             return new Node()

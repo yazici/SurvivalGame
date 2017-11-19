@@ -236,9 +236,9 @@ namespace LibNoise
             width -= xCrop;
             height -= yCrop;
             var result = new float[width, height];
-            for (var x = 0; x < width; x++)
+            for (var x = 0; x < width; ++x)
             {
-                for (var y = 0; y < height; y++)
+                for (var y = 0; y < height; ++y)
                 {
                     float sample;
                     if (isNormalized)
@@ -261,9 +261,9 @@ namespace LibNoise
         /// <param name="value">The constant value to clear the noise map with.</param>
         public void Clear(float value = 0f)
         {
-            for (var x = 0; x < _width; x++)
+            for (var x = 0; x < _width; ++x)
             {
-                for (var y = 0; y < _height; y++)
+                for (var y = 0; y < _height; ++y)
                 {
                     _data[x, y] = value;
                 }
@@ -304,10 +304,10 @@ namespace LibNoise
             var xd = xe / ((double) _width - _ucBorder);
             var zd = ze / ((double) _height - _ucBorder);
             var xc = left;
-            for (var x = 0; x < _ucWidth; x++)
+            for (var x = 0; x < _ucWidth; ++x)
             {
                 var zc = top;
-                for (var y = 0; y < _ucHeight; y++)
+                for (var y = 0; y < _ucHeight; ++y)
                 {
                     float fv;
                     if (isSeamless)
@@ -374,10 +374,10 @@ namespace LibNoise
             var xd = ae / ((double) _width - _ucBorder);
             var yd = he / ((double) _height - _ucBorder);
             var ca = angleMin;
-            for (var x = 0; x < _ucWidth; x++)
+            for (var x = 0; x < _ucWidth; ++x)
             {
                 var ch = heightMin;
-                for (var y = 0; y < _ucHeight; y++)
+                for (var y = 0; y < _ucHeight; ++y)
                 {
                     _ucData[x, y] = (float) GenerateCylindrical(ca, ch);
                     if (x >= _ucBorder && y >= _ucBorder && x < _width + _ucBorder &&
@@ -427,10 +427,10 @@ namespace LibNoise
             var xd = loe / ((double) _width - _ucBorder);
             var yd = lae / ((double) _height - _ucBorder);
             var clo = west;
-            for (var x = 0; x < _ucWidth; x++)
+            for (var x = 0; x < _ucWidth; ++x)
             {
                 var cla = south;
-                for (var y = 0; y < _ucHeight; y++)
+                for (var y = 0; y < _ucHeight; ++y)
                 {
                     _ucData[x, y] = (float) GenerateSpherical(cla, clo);
                     if (x >= _ucBorder && y >= _ucBorder && x < _width + _ucBorder &&
@@ -463,9 +463,9 @@ namespace LibNoise
         {
             var texture = new Texture2D(_width, _height);
             var pixels = new Color[_width * _height];
-            for (var x = 0; x < _width; x++)
+            for (var x = 0; x < _width; ++x)
             {
-                for (var y = 0; y < _height; y++)
+                for (var y = 0; y < _height; ++y)
                 {
                     float sample;
                     if (!float.IsNaN(_borderValue) &&
@@ -495,9 +495,9 @@ namespace LibNoise
         {
             var texture = new Texture2D(_width, _height);
             var pixels = new Color[_width * _height];
-            for (var x = 0; x < _ucWidth; x++)
+            for (var x = 0; x < _ucWidth; ++x)
             {
-                for (var y = 0; y < _ucHeight; y++)
+                for (var y = 0; y < _ucHeight; ++y)
                 {
                     var xPos = (_ucData[Mathf.Max(0, x - _ucBorder), y] -
                                 _ucData[Mathf.Min(x + _ucBorder, _height + _ucBorder), y]) / 2;

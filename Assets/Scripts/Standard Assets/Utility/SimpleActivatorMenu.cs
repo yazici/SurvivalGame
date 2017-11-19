@@ -26,7 +26,7 @@ namespace UnityStandardAssets.Utility
         {
             int nextactiveobject = m_CurrentActiveObject + 1 >= objects.Length ? 0 : m_CurrentActiveObject + 1;
 
-            for (int i = 0; i < objects.Length; i++)
+            for (int i = 0; i < objects.Length; ++i)
             {
                 objects[i].SetActive(i == nextactiveobject);
             }

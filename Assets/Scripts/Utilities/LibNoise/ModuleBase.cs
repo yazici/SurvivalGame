@@ -172,7 +172,7 @@ namespace LibNoise
         {
             if (_modules != null)
             {
-                for (var i = 0; i < _modules.Length; i++)
+                for (var i = 0; i < _modules.Length; ++i)
                 {
                     _modules[i].Dispose();
                     _modules[i] = null;

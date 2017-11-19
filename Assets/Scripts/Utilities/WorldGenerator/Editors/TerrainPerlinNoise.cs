@@ -41,7 +41,7 @@ namespace Pamux.Lib.WorldGen.Editors
         {
             float[,] heights = new float[terrain.terrainData.heightmapWidth, terrain.terrainData.heightmapHeight];
 
-            for (int i = 0; i < terrain.terrainData.heightmapWidth; i++)
+            for (int i = 0; i < terrain.terrainData.heightmapWidth; ++i)
             {
                 for (int k = 0; k < terrain.terrainData.heightmapHeight; k++)
                 {

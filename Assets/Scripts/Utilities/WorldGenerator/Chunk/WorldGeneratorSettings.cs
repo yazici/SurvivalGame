@@ -2,6 +2,7 @@
 using Pamux.Lib.Utilities;
 using Pamux.Lib.Enums;
 using Pamux.Lib.Extensions;
+using Pamux.Lib.Procedural.Enums;
 
 namespace Pamux.Lib.WorldGen
 {

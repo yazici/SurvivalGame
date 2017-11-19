@@ -125,7 +125,7 @@ namespace LibNoise.Generator
             x *= _frequency;
             y *= _frequency;
             z *= _frequency;
-            for (var i = 0; i < _octaveCount; i++)
+            for (var i = 0; i < _octaveCount; ++i)
             {
                 var nx = Utils.MakeInt32Range(x);
                 var ny = Utils.MakeInt32Range(y);

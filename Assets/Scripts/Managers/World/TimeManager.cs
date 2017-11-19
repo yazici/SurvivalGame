@@ -5,6 +5,7 @@ using Pamux.Lib.Utilities;
 using Pamux.Lib.GameObjects.GameModel;
 using System;
 using UnityEngine.UI;
+using Pamux.Lib.Procedural.Enums;
 
 namespace Pamux.Lib.Managers
 {
